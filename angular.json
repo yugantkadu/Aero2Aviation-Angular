@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Aero2Aviation"
+    }
+  },
+  "defaultProject": "Aero2Aviation",
+  "cli": {
+    "analytics": false
+  }
 }
