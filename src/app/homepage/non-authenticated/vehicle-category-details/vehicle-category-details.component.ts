@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {VehicleCategoryDetailsService} from './vehicle-category-details.service';
+import { Category } from './category'; 
 @Component({
   selector: 'app-vehicle-category-details',
   templateUrl: './vehicle-category-details.component.html',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehicleCategoryDetailsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private VehicleCategoryDetailsService:VehicleCategoryDetailsService) { }
+  category:Category
   ngOnInit(): void {
   }
-
+  callCategoryDetails(){
+    this.VehicleCategoryDetailsService.invokeCategoryDetails().subscribe((data:any) => {
+      this.category = data;
+      console.log(this.category);
+    });
+  }
 }

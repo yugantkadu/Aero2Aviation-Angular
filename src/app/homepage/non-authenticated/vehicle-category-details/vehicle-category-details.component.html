@@ -1,1 +1,11 @@
-<p>vehicle-category-details works!</p>
+<input type="button" value="callCategoryDetails" (click)="callCategoryDetails()">
+
+
+<table>
+    <tr *ngFor="let cat of category">
+      <td>{{cat.categoryid}}</td>
+      <td>{{cat.name}}</td>
+      <td>{{cat.categorydescription}}</td>
+  
+  </tr>
+</table>
