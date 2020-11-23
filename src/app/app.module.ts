@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './auth/user-login/user-login.component';
 import { UserRegistrationComponent } from './auth/user-registration/user-registration.component';
@@ -16,7 +16,8 @@ import { VehicleBrandDetailsComponent } from './homepage/non-authenticated/vehic
     VehicleBrandDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

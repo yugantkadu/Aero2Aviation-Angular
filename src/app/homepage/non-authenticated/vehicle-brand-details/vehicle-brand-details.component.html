@@ -1,1 +1,10 @@
-<p>vehicle-brand-details works!</p>
+<input type = "button" value = "callBrandDetails" (click) = "callBrandDetails()" >
+<table>
+    <tr *ngFor="let br of brand">
+      <td>{{br.brandid}}</td>
+      <td>{{br.brandname}}</td>
+      <td>{{br.branddescription}}</td>
+    </tr>
+  </table>
+  
+  
