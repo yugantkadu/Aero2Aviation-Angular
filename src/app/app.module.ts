@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms'
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './auth/user-login/user-login.component';
 import { UserRegistrationComponent } from './auth/user-registration/user-registration.component';
