@@ -5,13 +5,24 @@
 <form>
     <b>First Name : </b><input name = "firstname" [(ngModel)] = "userDetails.firstname"><br><br>
     <b>Last Name : </b><input name = "lastname" [(ngModel)] = "userDetails.lastname"><br><br>
-    <b>Email : </b><input name = "email" [(ngModel)] = "userDetails.email"><br><br>
-    <b>Password : </b><input name = "password" [(ngModel)] = "userDetails.password"><br><br>
+    <b>Email : </b><input name = "email" [(ngModel)] = "userDetails.email" type="email"><br><br>
+    <b>Password : </b><input name = "password" [(ngModel)] = "userDetails.password" type="password"><br><br>
     <b>Mobile Number : </b><input name = "mobileno" [(ngModel)] = "userDetails.mobileno"><br><br>
     <b>Address : </b><input name = "address" [(ngModel)] = "userDetails.address"><br><br>
     <b>Pincode : </b><input name = "pincode" [(ngModel)] = "userDetails.pincode"><br><br>
-    <b>CategoryId : </b><input name="categoryid" [(ngModel)] = "userDetails.categoryid"><br><br>
-    <b>BrandId : </b><input name = "brandid" [(ngModel)] = "userDetails.brandid"><br><br>
+    Category
+    <div>
+    <select [(ngModel)] = "userDetails.categoryid" (change)="onSelect(userDetails.categoryid)" name = "categoryid">
+      <option selected disabled value="">Please Select Option</option>
+      <option *ngFor="let category of categoryType" [ngValue]="category.categoryid">{{category.name}}</option>
+    </select><br><br>
+  </div>
+    Brand
+    <select [(ngModel)] = "userDetails.brandid" name = "brandid">
+      <option selected disabled value="">Please Select Option</option>
+      <option *ngFor="let brand of changeBrand" [ngValue]="brand.brandid">{{brand.name}}</option>
+    </select><br><br>
+
     <b>Customer Type : </b><select [(ngModel)]="userDetails.customertype" name = "customertype">
         <option selected disabled value="Retailer">Please Select Option</option>
         <option *ngFor="let customertype of customertype" [ngValue]="customertype">{{customertype}}</option>
@@ -21,12 +32,12 @@
   </form>
 
    <div *ngIf="userResult != undefined ">
-    
+
       <b>{{ userResult.message}}</b>
-         
-        
+
+
    </div>
-        
+
 
 
 

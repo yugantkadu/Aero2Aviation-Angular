@@ -1,6 +1,6 @@
-export class User 
+export class User
 {
-
+    customerid : number;
     firstname : string;
     lastname: string;
     email:string;
@@ -11,7 +11,7 @@ export class User
     categoryid: number;
     brandid: number;
     customertype : string;
-     
+
 
 
 
