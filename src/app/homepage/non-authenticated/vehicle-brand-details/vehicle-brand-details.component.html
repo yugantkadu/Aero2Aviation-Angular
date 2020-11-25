@@ -1,10 +1,9 @@
-<input type = "button" value = "callBrandDetails" (click) = "callBrandDetails()" >
+<h1>Brand</h1>
 <table>
     <tr *ngFor="let br of brand">
-      <td>{{br.brandid}}</td>
-      <td>{{br.brandname}}</td>
+      <td><img *ngIf="br.image !== null" src="{{br.image}}"></td>
+      <td><h2>{{br.name}}</h2></td>
       <td>{{br.branddescription}}</td>
     </tr>
   </table>
-  
-  
+

@@ -1,11 +1,8 @@
-<input type="button" value="callCategoryDetails" (click)="callCategoryDetails()">
-
-
+<h1>Category</h1>
 <table>
     <tr *ngFor="let cat of category">
-      <td>{{cat.categoryid}}</td>
-      <td>{{cat.name}}</td>
-      <td>{{cat.categorydescription}}</td>
-  
+      <td><img *ngIf="cat.image !== null" src="{{cat.image}}"></td>
+      <td><h2 *ngIf="cat.image !== null">{{cat.name}}</h2></td>
+      <td><p *ngIf="cat.image !== null">{{cat.categorydescription}}</p></td>
   </tr>
 </table>

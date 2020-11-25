@@ -1,10 +1,9 @@
 <h1> User Login</h1>
 <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
   <table>
-  <input type="text" name="email" ngModel placeholder="email" type="email" required>
-  <input type="text" name="password" ngModel placeholder="password" type="password" required>
+  <input type="text" name="email" ngModel placeholder="email" type="email" required><br>
+  <input type="text" name="password" ngModel placeholder="password" type="password" required><br>
   <input type="submit">
   </table>
-
   {{message}}
 </form>

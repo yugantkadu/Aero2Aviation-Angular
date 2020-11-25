@@ -1,0 +1,11 @@
+
+<h1> Auto2Aviation</h1>
+<table>
+  <tr>
+      <td *ngFor="let category of categoryDetails">
+          <img *ngIf="category.image !== null" src="{{category.image}}">
+          <h2 *ngIf="category.image !== null">{{category.name}}</h2>
+      </td>
+  </tr>
+
+</table>

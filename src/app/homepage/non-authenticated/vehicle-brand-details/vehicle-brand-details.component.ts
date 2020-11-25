@@ -9,17 +9,15 @@ import {Brands} from './brands'
 })
 
 export class VehicleBrandDetailsComponent implements OnInit {
-  brand : Brands;
-  
-  constructor(private VehicleBrandDetailsService:VehicleBrandDetailsService) { }
+  brand: Brands;
+
+  constructor(private vehicleBrandDetailsService: VehicleBrandDetailsService) { }
 
   ngOnInit(): void {
-  }
-
-  callBrandDetails(){
-    this.VehicleBrandDetailsService.invokeBrandDetails().subscribe ((data:any) =>{
+    this.vehicleBrandDetailsService.invokeBrandDetails().subscribe ((data: any) => {
       this.brand = data;
       console.log(this.brand);
   });
-}
+  }
+
 }
