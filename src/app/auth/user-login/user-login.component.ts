@@ -21,6 +21,7 @@ export class UserLoginComponent implements OnInit {
     this.userService.invokeVerifyUser(form.value.email, form.value.password).subscribe((data: any) => {
       console.log(data);
       this.user = data;
+      sessionStorage.setItem('username', this.user.email);
       this.message = this.user.customerid !== 0 ? 'Login Successful' : 'Login Failed';
     });
   }

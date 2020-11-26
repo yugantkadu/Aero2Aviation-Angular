@@ -15,6 +15,8 @@ export class VehicleLandingPageComponent implements OnInit {
     this.vehicleCategoryDetailsService.invokeCategoryDetails().subscribe((data: any) => {
       this.categoryDetails = data;
     });
+
+
   }
 
 }

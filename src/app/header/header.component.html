@@ -11,10 +11,12 @@
     [routerLinkActiveOptions]="{exact:true}">Brand</a>
 
     <a routerLink="/user-login" routerLinkActive="active"
-    [routerLinkActiveOptions]="{exact:true}">Login</a>
+    [routerLinkActiveOptions]="{exact:true}" *ngIf="isUserLoggedIn()">Login</a>
 
     <a routerLink="/user-register" routerLinkActive="active"
-    [routerLinkActiveOptions]="{exact:true}">Register</a>
+    [routerLinkActiveOptions]="{exact:true}" *ngIf="isUserLoggedIn()">Register</a>
+
+    <a routerLink="/" (click)="logOut()" *ngIf="!isUserLoggedIn()">Logout</a>
 
   </div>
 </div>
