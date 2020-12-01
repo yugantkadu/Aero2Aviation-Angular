@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <th>Userid</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Mobileno</th>
+    <th>Address</th>
+    <th>Pincode</th>
+    <th>Categoryid</th>
+    <th>Brandid</th>
+    <th>Usertype</th>
+    <th>Modify</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td><input type="text" [(ngModel)]="user.userid" disabled></td>
+    <td><input type="text" [(ngModel)]="user.firstname"></td>
+    <td><input type="text" [(ngModel)]="user.lastname"></td>
+    <td><input type="text" [(ngModel)]="user.email"></td>
+    <td><input type="text" [(ngModel)]="user.password"></td>
+    <td><input type="text" [(ngModel)]="user.mobileno"></td>
+    <td><input type="text" [(ngModel)]="user.address"></td>
+    <td><input type="text" [(ngModel)]="user.pincode"></td>
+
+   <td><input type="text" [(ngModel)]="user.categoryid"></td>
+   <td><input type="text" [(ngModel)]="user.brandid"></td>
+
+    <td><input type="text" [(ngModel)]="user.usertype"></td>
+    <td><input type="button" value="Modify" (click)="modify(user)"></td>
+    <td><input type="button" value="Delete" (click)="delete(user.userid)"></td>
+  </tr>
+</table>

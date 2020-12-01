@@ -1,6 +1,8 @@
 <div class="header">
   <a  routerLink="/" class="logo">Auto2Aviation</a>
   <div class="header-right">
+
+    <span *ngIf="isUserLoggedIn()">
     <a routerLink="/" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">Home</a>
 
@@ -11,12 +13,33 @@
     [routerLinkActiveOptions]="{exact:true}">Brand</a>
 
     <a routerLink="/user-login" routerLinkActive="active"
-    [routerLinkActiveOptions]="{exact:true}" *ngIf="isUserLoggedIn()">Login</a>
+    [routerLinkActiveOptions]="{exact:true}">Login</a>
 
     <a routerLink="/user-register" routerLinkActive="active"
-    [routerLinkActiveOptions]="{exact:true}" *ngIf="isUserLoggedIn()">Register</a>
+    [routerLinkActiveOptions]="{exact:true}">Register</a>
+   </span>
 
+  <span *ngIf="usertype === 'admin' && !isUserLoggedIn()">
+    <a routerLink="/admin" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">User</a>
+
+    <a routerLink="" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Category</a>
+
+    <a routerLink="" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Brand</a>
+
+    <a routerLink="" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Product</a>
+
+    <a routerLink="" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Order</a>
+
+    <a routerLink="" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Payment</a>
     <a routerLink="/" (click)="logOut()" *ngIf="!isUserLoggedIn()">Logout</a>
+
+  </span>
 
   </div>
 </div>

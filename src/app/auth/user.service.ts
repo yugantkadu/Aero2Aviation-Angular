@@ -26,4 +26,8 @@ export class UserService {
     return this.http.post<any>(url + '/user/verifyCustomer', userData);
   }
 
+  invokeAllUsers(): Observable<User>{
+    return this.http.get<User>(url + '/admin/allUsers');
+  }
+
 }

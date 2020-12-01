@@ -6,7 +6,7 @@ import { VehicleCategoryDetailsService } from 'src/app/homepage/non-authenticate
 
 import {User} from '../user';
 import {UserService} from '../user.service';
-import {UserRegistrationResult} from './user-registration-result';
+import {UserResult} from '../user-result';
 
 @Component({
   selector: 'app-user-registration',
@@ -16,9 +16,9 @@ import {UserRegistrationResult} from './user-registration-result';
 export class UserRegistrationComponent implements OnInit {
 
   userDetails: User;
-  userResult: UserRegistrationResult;
+  userResult: UserResult;
   msg: string;
-  customertype: string[] = ['retailer', 'manufacturer'];
+  usertype: string[] = ['retailer', 'manufacturer'];
   categoryType: Category;
   brandType: any;
   changeBrand: Brands;
@@ -56,7 +56,8 @@ export class UserRegistrationComponent implements OnInit {
 
         this.userResult = data ;
         console.log(this.userResult);
-        this.userDetails.firstname= " ";
+        this.userDetails = null;
+        /*this.userDetails.firstname= " ";
         this.userDetails.lastname = "";
         this.userDetails.email = "";
         this.userDetails.password = "";
@@ -64,8 +65,8 @@ export class UserRegistrationComponent implements OnInit {
         this.userDetails.pincode = null;
         this.userDetails.categoryid = null ;
         this.userDetails.brandid = null;
-        this.userDetails.customertype = "";
-        this.userDetails.mobileno= null;
+        this.userDetails.usertype = "";
+        this.userDetails.mobileno= null;*/
 
      },
       (err)=>{

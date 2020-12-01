@@ -22,12 +22,18 @@
       <option *ngFor="let brand of changeBrand" [ngValue]="brand.brandid">{{brand.name}}</option>
     </select><br><br>
 
-    <b>Customer Type : </b><select [(ngModel)]="userDetails.customertype" name = "customertype">
+    <b>Customer Type : </b><select [(ngModel)]="userDetails.usertype" name = "customertype">
         <option selected disabled value="Retailer">Please Select Option</option>
-        <option *ngFor="let customertype of customertype" [ngValue]="customertype">{{customertype}}</option>
+        <option *ngFor="let usertype of usertype" [ngValue]="usertype">{{usertype}}</option>
       </select>
       <br><br><br>
-    <button (click)="callRegister()" width="50"> Register</button><br><br><br>
+    <button (click)="callRegister()" width="50"> Register</button>
+    <div *ngIf="userResult != undefined ">
+
+      <b>{{ userResult.message}}</b>
+
+   </div>
+    <br><br><br>
   </form>
 
   

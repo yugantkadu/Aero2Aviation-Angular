@@ -1,6 +1,6 @@
 export class User
 {
-    customerid : number;
+    userid : number;
     firstname : string;
     lastname: string;
     email:string;
@@ -10,19 +10,6 @@ export class User
     pincode: string;
     categoryid: number;
     brandid: number;
-    customertype : string;
-
-
-
-
-
-
-
-
-
-
-
-
-
+    usertype : string;
 
 }
