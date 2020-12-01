@@ -5,3 +5,4 @@ export class Category {
     private  categorydescription:String; 
     private  image :String;
 }
+
