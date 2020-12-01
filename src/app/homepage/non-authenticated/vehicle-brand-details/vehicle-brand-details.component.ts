@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {VehicleBrandDetailsService} from './vehicle-brand-details.service';
-import {Brands} from './brands'
+import {Brands} from './brands';
 
 @Component({
   selector: 'app-vehicle-brand-details',

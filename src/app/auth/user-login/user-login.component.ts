@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { UserResult } from '../user-result';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -10,8 +12,9 @@ import { UserService } from '../user.service';
 })
 export class UserLoginComponent implements OnInit {
   user: User;
+  userResult: UserResult;
   message: string;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,9 +23,19 @@ export class UserLoginComponent implements OnInit {
     //console.log(form);
     this.userService.invokeVerifyUser(form.value.email, form.value.password).subscribe((data: any) => {
       console.log(data);
-      this.user = data;
-      sessionStorage.setItem('username', this.user.email);
-      this.message = this.user.customerid !== 0 ? 'Login Successful' : 'Login Failed';
+      this.userResult = data;
+
+      if (this.userResult.user !== null && this.userResult.user.usertype === 'admin') {
+        sessionStorage.setItem('username', this.userResult.user.email);
+        sessionStorage.setItem('usertype', this.userResult.user.usertype);
+        this.router.navigate(['/admin']);
+      }
+
+      if ( this.userResult.status === true){
+        sessionStorage.setItem('username', this.userResult.user.email);
+        sessionStorage.setItem('usertype', this.userResult.user.usertype);
+      }
+      this.message = this.userResult.status === true ? 'Login Successful' : 'Login Failed';
     });
   }
 

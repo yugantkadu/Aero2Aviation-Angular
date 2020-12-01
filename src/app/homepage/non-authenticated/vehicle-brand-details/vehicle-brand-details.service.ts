@@ -7,9 +7,9 @@ import {Observable} from 'rxjs';
 })
 export class VehicleBrandDetailsService {
 
-  constructor(private http : HttpClient) { }
-  
-  invokeBrandDetails():Observable<any>{
+  constructor(private http: HttpClient) { }
+
+  invokeBrandDetails(): Observable<any>{
     const url = 'http://localhost:7071/vehicle/getAllBrands';
     return this.http.get<any>(url);
   }

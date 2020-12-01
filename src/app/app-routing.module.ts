@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
+import { AdminComponent } from './auth/admin/admin.component';
 import { UserLoginComponent } from './auth/user-login/user-login.component';
 import { UserRegistrationComponent } from './auth/user-registration/user-registration.component';
 import { VehicleBrandDetailsComponent } from './homepage/non-authenticated/vehicle-brand-details/vehicle-brand-details.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'vehicle-brand', component: VehicleBrandDetailsComponent},
   {path: 'user-login', component: UserLoginComponent},
   {path: 'user-register', component: UserRegistrationComponent},
+  {path: 'admin', component: AdminComponent},
 ]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports
