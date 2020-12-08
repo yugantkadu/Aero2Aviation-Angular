@@ -1,1 +1,11 @@
-<p>vehicle-order works!</p>
+<h1>Orderdetails</h1>
+<table>
+    <tr *ngFor="let or of orderdetails">
+      <td><h2>{{or.orderid}}</h2></td>
+      <td>{{or.productname}}</td>
+      <td>{{or.firstname}}</td>
+      <td>{{or.lastname}}</td>
+      <td>{{or.quantityordered}}</td>
+      <td>{{or.price}}</td>
+    </tr>
+  </table>
