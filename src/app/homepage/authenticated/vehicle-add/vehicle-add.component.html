@@ -1,1 +1,23 @@
-<p>vehicle-add works!</p>
+<div align = "center">
+    <h1>Add Vehicle By Manufacturer</h1>
+    <br><br> 
+    <form #addVehicalPost="ngForm" (ngSubmit)="onAddProduct(addVehicalPost.value)" >
+    
+    <b>Brand Name : </b><input type="text" name="brandid"  placeholder="brandid" disabled type="brandid" ngModel required>
+    <br><br>
+    <b>Manufacturer Name : </b><input type="text" name="manufacturerid" disabled placeholder="manufacturerid" type="manufacturerid" ngModel required><br>
+    <br><b>Product Name : </b><input type="text" name="productname"  placeholder="productname" type="productname" ngModel required><br>
+    <br><b>Product Description : </b><input type="text" name="productdescription" placeholder="productDescription" type="productdescription" ngModel required><br>
+    <br><b>Product Image : </b><input type="text" name="productimage"  placeholder="Please Enter the Path of Image" type="productimage" ngModel required><br>
+    <br><b>Product Quantity : </b><input type="text" name="quantityinstock"  placeholder="quantityInStock" type="quantityinstock" ngModel required><br>
+    <br><b>Buy Price : </b><input type="text" name="buyprice"  placeholder="buyPrice" type="buyprice" ngModel required><br>
+    <br><br> 
+       <button type="submit">Add Products</button>
+    </form><br>
+    
+      <div *ngIf="vehicleAddResult != undefined ">
+    
+        <b>{{ vehicleAddResult.message}}</b>
+    
+     </div>
+</div>

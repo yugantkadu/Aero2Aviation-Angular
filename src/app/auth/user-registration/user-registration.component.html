@@ -9,24 +9,22 @@
     <b>Mobile Number : </b><input name = "mobileno" [(ngModel)] = "userDetails.mobileno"><br><br>
     <b>Address : </b><input name = "address" [(ngModel)] = "userDetails.address"><br><br>
     <b>Pincode : </b><input name = "pincode" [(ngModel)] = "userDetails.pincode"><br><br>
-    Category
-    <div>
+    <b>Category : </b>  
     <select [(ngModel)] = "userDetails.categoryid" (change)="onSelect(userDetails.categoryid)" name = "categoryid">
       <option selected disabled value="">Please Select Option</option>
       <option *ngFor="let category of categoryType" [ngValue]="category.categoryid">{{category.name}}</option>
-    </select><br><br>
-  </div>
-    Brand
+    </select><br><br> 
+    <b>Brand : </b>
     <select [(ngModel)] = "userDetails.brandid" name = "brandid">
       <option selected disabled value="">Please Select Option</option>
       <option *ngFor="let brand of changeBrand" [ngValue]="brand.brandid">{{brand.name}}</option>
     </select><br><br>
-
     <b>Customer Type : </b><select [(ngModel)]="userDetails.usertype" name = "customertype">
         <option selected disabled value="Retailer">Please Select Option</option>
         <option *ngFor="let usertype of usertype" [ngValue]="usertype">{{usertype}}</option>
       </select>
-      <br><br><br>
+    <br><br><br>
+    
     <button (click)="callRegister()" width="50"> Register</button>
     <div *ngIf="userResult != undefined ">
 

@@ -1,1 +1,22 @@
-<p>user-profile works!</p>
+<div align = "center">
+    <h1>See User Profile</h1>
+    <button (click)="invokeUserProfile()"> GetUserProfile</button>
+<br><br>
+<table align="center" >
+    <tr>
+      <th>UserId</th>
+      <th>UserName</th>
+      <th>CategoryName</th>
+      <th>BrandName</th>
+      <th>UserType</th>
+    </tr>
+    <tr *ngFor="let user of userProfileResult">
+     
+      <td>{{user.userid}}</td>
+      <td>{{user.firstname}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.brandname}}</td>
+      <td>{{user.usertype}}</td>
+    </tr>
+  </table>
+</div>
