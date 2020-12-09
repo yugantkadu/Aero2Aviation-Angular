@@ -1,8 +1,12 @@
 export class Category {
 
-    private categoryid:number;
-    private  name : String ;
-    private  categorydescription:String; 
-    private  image :String;
+    public categoryid:number;
+    public  name ?: String ;
+    public  categorydescription?:String;
+    public  image ?:String;
+
+    constructor(){
+      this.categoryid = 0;
+    }
 }
 
