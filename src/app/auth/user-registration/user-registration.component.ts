@@ -22,6 +22,8 @@ export class UserRegistrationComponent implements OnInit {
   categoryType: Category;
   brandType: any;
   changeBrand: Brands;
+  categoryFetch: number;
+  brandFetch: number;
 
   constructor(private userRegistrationService: UserService, private brandService: VehicleBrandDetailsService, private categoryService: VehicleCategoryDetailsService) {
     this.userDetails = new User();
@@ -48,8 +50,19 @@ export class UserRegistrationComponent implements OnInit {
   {
 
     console.log(this.userDetails);
-
-    this.userRegistrationService.callRegisterUserDetails(this.userDetails).subscribe(
+    console.log(this.categoryFetch);
+    const alterData = {
+      firstname : this.userDetails.firstname,
+      lastname: this.userDetails.lastname,
+      email: this.userDetails.email,
+      password: this.userDetails.password,
+      mobileno : this.userDetails.mobileno,
+      address: this.userDetails.address,
+      pincode: this.userDetails.pincode,
+      categoryid: {categoryid : this.categoryFetch},
+      brandid: {brandid: this.brandFetch},
+      usertype : this.userDetails.usertype};
+    this.userRegistrationService.callRegisterUserDetails(alterData).subscribe(
       (data)=>{
 
         //console.log(data);
@@ -57,6 +70,7 @@ export class UserRegistrationComponent implements OnInit {
         this.userResult = data ;
         console.log(this.userResult);
         this.userDetails = null;
+        alert(this.userResult.message);
         /*this.userDetails.firstname= " ";
         this.userDetails.lastname = "";
         this.userDetails.email = "";

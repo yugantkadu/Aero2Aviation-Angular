@@ -16,6 +16,7 @@ export class UserService {
   callRegisterUserDetails(user: User ): Observable<any>
   {
     console.log('Service Layer');
+    console.log(user);
     return this.http.post<any>(url + '/user/registration', user);
 
   }
