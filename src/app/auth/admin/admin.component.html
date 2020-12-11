@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="routeName === 'user'">
   <tr>
     <th>Userid</th>
     <th>Firstname</th>
@@ -32,3 +32,33 @@
     <td><input type="button" value="Delete" (click)="delete(user.userid)"></td>
   </tr>
 </table>
+
+<table *ngIf="routeName === 'category'">
+ <tr>
+   <td>Heelo Category</td>
+ </tr>
+</table>
+
+<table *ngIf="routeName === 'brand'">
+  <tr>
+    <td>Heelo Brand</td>
+  </tr>
+ </table>
+
+ <table *ngIf="routeName === 'order'">
+  <tr>
+    <td>Heelo order</td>
+  </tr>
+ </table>
+
+ <table *ngIf="routeName === 'product'">
+  <tr>
+    <td>Heelo Product</td>
+  </tr>
+ </table>
+
+ <table *ngIf="routeName === 'payment'">
+  <tr>
+    <td>Heelo payment</td>
+  </tr>
+ </table>

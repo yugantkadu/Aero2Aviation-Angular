@@ -11,6 +11,7 @@ import { VehicleBrandDetailsComponent } from './homepage/non-authenticated/vehic
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { VehicleLandingPageComponent } from './homepage/non-authenticated/vehicle-landing-page/vehicle-landing-page.component';
+import { VehicleLandingPageComponent as LandingPageComponent} from './homepage/authenticated/vehicle-landing-page/vehicle-landing-page.component';
 import { AdminComponent } from './auth/admin/admin.component';
 import { VehicleAddComponent } from './homepage/authenticated/vehicle-add/vehicle-add.component';
 import { VehicleOrderComponent } from './homepage/authenticated/vehicle-order/vehicle-order.component';
@@ -26,6 +27,7 @@ import { UserProfileComponent } from './homepage/authenticated/user-profile/user
     HeaderComponent,
     FooterComponent,
     VehicleLandingPageComponent,
+    LandingPageComponent,
     AdminComponent,
     VehicleAddComponent,
     VehicleOrderComponent,

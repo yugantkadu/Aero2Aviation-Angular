@@ -4,6 +4,7 @@ import { Category } from 'src/app/homepage/non-authenticated/vehicle-category-de
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { AdminService } from './admin.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -15,14 +16,36 @@ export class AdminComponent implements OnInit {
   brandType: any;
   changeBrand: Brands;
   categoryType: Category;
+  routeName: string;
 
   modifyStatus: any;
   txt: string;
-  constructor(private userService: UserService, private adminService: AdminService) { }
+  constructor(private userService: UserService, private adminService: AdminService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //this.users = new User();
-    this.callAllUsers();
+    this.route.paramMap.subscribe( (params: ParamMap) => {
+      this.routeName = params.get('routeName');
+      console.log(this.routeName);
+    });
+    if(this.routeName === 'user'){
+      this.callAllUsers();
+    }
+    else if(this.routeName === 'category') {
+
+    }
+    else if(this.routeName === 'brand') {
+
+    }
+    else if(this.routeName === 'product') {
+
+    }
+    else if(this.routeName === 'order') {
+
+    }
+    else if(this.routeName === 'payment') {
+
+    }
   }
 
   callAllUsers(){
@@ -33,17 +56,89 @@ export class AdminComponent implements OnInit {
   }
 
   modify(user: User) {
-    this.modifyStatus = 'Do you want to modify User with UserId ' + user.userid;
-    const mod = confirm(this.modifyStatus);
+    if(this.routeName === 'user'){
+      this.modifyStatus = 'Do you want to modify User with UserId ' + user.userid;
+      const mod = confirm(this.modifyStatus);
 
-    if (mod === true) {
-      this.adminService.invokeModifyUser(user).subscribe((data: any) => {
-        console.log(data);
-      });
-      alert('Userid ' + user.userid + ' has been modified ');
+      if (mod === true) {
+        this.adminService.invokeModifyUser(user).subscribe((data: any) => {
+          console.log(data);
+        });
+        alert('Userid ' + user.userid + ' has been modified ');
+      }
+      else {
+        this.callAllUsers();
+      }
     }
-    else {
-      this.callAllUsers();
+    else if(this.routeName === 'category'){
+      this.modifyStatus = 'Do you want to modify category with UserId ' + user.userid;
+      const mod = confirm(this.modifyStatus);
+
+      if (mod === true) {
+        this.adminService.invokeModifyUser(user).subscribe((data: any) => {
+          console.log(data);
+        });
+        alert('Userid ' + user.userid + ' has been modified ');
+      }
+      else {
+        this.callAllUsers();
+      }
+    }
+    else if(this.routeName === 'brand'){
+      this.modifyStatus = 'Do you want to modify User with UserId ' + user.userid;
+      const mod = confirm(this.modifyStatus);
+
+      if (mod === true) {
+        this.adminService.invokeModifyUser(user).subscribe((data: any) => {
+          console.log(data);
+        });
+        alert('Userid ' + user.userid + ' has been modified ');
+      }
+      else {
+        this.callAllUsers();
+      }
+    }
+    else if(this.routeName === 'order'){
+      this.modifyStatus = 'Do you want to modify User with UserId ' + user.userid;
+      const mod = confirm(this.modifyStatus);
+
+      if (mod === true) {
+        this.adminService.invokeModifyUser(user).subscribe((data: any) => {
+          console.log(data);
+        });
+        alert('Userid ' + user.userid + ' has been modified ');
+      }
+      else {
+        this.callAllUsers();
+      }
+    }
+    else if(this.routeName === 'product'){
+      this.modifyStatus = 'Do you want to modify User with UserId ' + user.userid;
+      const mod = confirm(this.modifyStatus);
+
+      if (mod === true) {
+        this.adminService.invokeModifyUser(user).subscribe((data: any) => {
+          console.log(data);
+        });
+        alert('Userid ' + user.userid + ' has been modified ');
+      }
+      else {
+        this.callAllUsers();
+      }
+    }
+    else if(this.routeName === 'payment'){
+      this.modifyStatus = 'Do you want to modify User with UserId ' + user.userid;
+      const mod = confirm(this.modifyStatus);
+
+      if (mod === true) {
+        this.adminService.invokeModifyUser(user).subscribe((data: any) => {
+          console.log(data);
+        });
+        alert('Userid ' + user.userid + ' has been modified ');
+      }
+      else {
+        this.callAllUsers();
+      }
     }
   }
 
