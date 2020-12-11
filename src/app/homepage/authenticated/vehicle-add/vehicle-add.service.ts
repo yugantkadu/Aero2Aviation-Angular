@@ -19,4 +19,12 @@ export class VehicleAddService
     console.log("Service Layer Calling");
     return this.http.post<any>(url + '/vehicle/addProduct', products);
   }
+
+  invokeProductDetails() : Observable<Products>
+  {
+    console.log("Service layer is calling");
+    const url = 'http://localhost:7071/vehicle/getAllProducts';
+    return this.http.get<Products>(url);
+
+  }
 }

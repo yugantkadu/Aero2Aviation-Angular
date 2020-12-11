@@ -34,9 +34,22 @@
 </table>
 
 <table *ngIf="routeName === 'category'">
- <tr>
-   <td>Heelo Category</td>
- </tr>
+  <tr>
+    <th>CategoryId</th>
+    <th>CategoryName</th>
+    <th>categoryDescription</th>
+    <th>image</th>
+  </tr>
+  <tr *ngFor="let cat of category">
+    <td><input type="text" [(ngModel)]="cat.categoryid" disabled></td>
+    <td><input type="text" [(ngModel)]="cat.name"></td>
+    <td><input type="text" [(ngModel)]="cat.categorydescription"></td>
+    <td><input type="text" [(ngModel)]="cat.image"></td>
+    
+
+    <td><input type="button" value="Modify" (click)="modify(cat)"></td>
+   <!--<td><input type="button" value="Delete" (click)="delete(user.userid)"></td>--> 
+  </tr>
 </table>
 
 <table *ngIf="routeName === 'brand'">
@@ -53,7 +66,28 @@
 
  <table *ngIf="routeName === 'product'">
   <tr>
-    <td>Heelo Product</td>
+    <th>ProductId</th>
+    <th>BrandId</th>
+    <th>ManufacturerId</th>
+    <th>ProductName</th>
+    <th>ProductDescription</th>
+    <th>ProductImage</th>
+    <th>QuantityInStock</th>
+    <th>BuyPrice</th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td><input type="text" [(ngModel)]="product.productid" disabled></td>
+    <td><input type="text" [(ngModel)]="product.brandid"></td>
+    <td><input type="text" [(ngModel)]="product.manufacturerid"></td>
+    <td><input type="text" [(ngModel)]="product.productname"></td>
+    <td><input type="text" [(ngModel)]="product.productdescription"></td>
+    <td><input type="text" [(ngModel)]="product.productimage"></td>
+    <td><input type="text" [(ngModel)]="product.quantityinstock"></td>
+    <td><input type="text" [(ngModel)]="product.buyprice"></td>
+
+
+     <td><input type="button" value="Modify" (click)="modify(product)"></td>
+ <!-- <td><input type="button" value="Delete" (click)="delete(user.userid)"></td>--> 
   </tr>
  </table>
 
