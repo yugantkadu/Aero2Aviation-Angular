@@ -7,13 +7,13 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 
-export class UserProfileService 
+export class UserProfileService
 {
   constructor(private http : HttpClient) { }
 
   CallUserProfile(): Observable<any>
   {
-    const url = 'http://localhost:7071/user/getUserProfileDetails';
+    const url = 'http://localhost:7071/user/allUsers';
     return this.http.get<any>(url);
   }
 }

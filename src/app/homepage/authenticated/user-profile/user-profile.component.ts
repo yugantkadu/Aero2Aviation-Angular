@@ -14,15 +14,10 @@ export class UserProfileComponent implements OnInit {
   constructor(private userProfileService:UserProfileService) { }
 
   ngOnInit(): void {
-  }
-
-  invokeUserProfile()
-  {
     this.userProfileService.CallUserProfile().subscribe ((data: any) => {
-     console.log(data);
-     this.userProfileResult = data;
-     console.log(this.userProfileResult);
-  });
-
+      console.log(data);
+      this.userProfileResult = data;
+      //console.log(this.userProfileResult);
+   });
   }
 }

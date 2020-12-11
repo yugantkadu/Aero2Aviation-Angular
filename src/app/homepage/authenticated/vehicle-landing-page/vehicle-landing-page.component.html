@@ -1,0 +1,20 @@
+<h1>Category</h1>
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Brand name</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Quantity Instock</th>
+    <th>Buyprice</th>
+  </tr>
+  <tr *ngFor="let pro of products">
+    <td><p><img src="{{pro.productimage}}"></p></td>
+    <td>{{pro.brandid.brandname}}</td>
+    <td><p>{{pro.manufacturerid.firstname}}</p></td>
+    <td><p>{{pro.productname}}</p></td>
+    <td><p>{{pro.productdescription}}</p></td>
+    <td><p>{{pro.quantityinstock}}</p></td>
+    <td><p>{{pro.buyprice}}</p></td>
+  </tr>
+</table>

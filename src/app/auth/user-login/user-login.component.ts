@@ -24,17 +24,18 @@ export class UserLoginComponent implements OnInit {
     this.userService.invokeVerifyUser(form.value.email, form.value.password).subscribe((data: any) => {
       console.log(data);
       this.userResult = data;
+      this.userService.setAuthData(this.userResult.user.userid, this.userResult.user.firstname, this.userResult.user.usertype);
 
       if (this.userResult.user !== null && this.userResult.user.usertype === 'admin') {
-        sessionStorage.setItem('username', this.userResult.user.email);
-        sessionStorage.setItem('usertype', this.userResult.user.usertype);
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin', "user"]);
+      }else{
+        this.router.navigate(['/user-landing-page']);
       }
 
-      if ( this.userResult.status === true){
-        sessionStorage.setItem('username', this.userResult.user.email);
-        sessionStorage.setItem('usertype', this.userResult.user.usertype);
-      }
+      // if ( this.userResult.status === true){
+      //   sessionStorage.setItem('username', this.userResult.user.email);
+      //   sessionStorage.setItem('usertype', this.userResult.user.usertype);
+      // }
       this.message = this.userResult.status === true ? 'Login Successful' : 'Login Failed';
     });
   }
