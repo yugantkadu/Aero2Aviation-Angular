@@ -16,19 +16,19 @@
       <th>Category Name</th>
       <th>User Type</th>
     </tr>
-    <tr *ngFor="let user of userProfileResult">
+    <tr>
 
-      <td>{{user.userid}}</td>
-      <td>{{user.firstname}}</td>
-      <td>{{user.lastname}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.password}}</td>
-      <td>{{user.mobileno}}</td>
-      <td>{{user.address}}</td>
-      <td>{{user.pincode}}</td>
-      <td>{{user.categoryid.name}}</td>
-      <td>{{user.brandid.name}}</td>
-      <td>{{user.usertype}}</td>
+      <td>{{user?.userid}}</td>
+      <td>{{user?.firstname}}</td>
+      <td>{{user?.lastname}}</td>
+      <td>{{user?.email}}</td>
+      <td>{{user?.password}}</td>
+      <td>{{user?.mobileno}}</td>
+      <td>{{user?.address}}</td>
+      <td>{{user?.pincode}}</td>
+      <td>{{user?.categoryid.name}}</td>
+      <td>{{user?.brandid.name}}</td>
+      <td>{{user?.usertype}}</td>
     </tr>
   </table>
 </div>

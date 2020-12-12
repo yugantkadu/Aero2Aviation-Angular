@@ -12,17 +12,17 @@
     <b>Address : </b><input name = "address" [(ngModel)] = "userDetails.address"><br><br>
     <b>Pincode : </b><input name = "pincode" [(ngModel)] = "userDetails.pincode"><br><br>
     <b>Category : </b>
-    <input name = "cat" [(ngModel)] = "categoryFetch"><br><br>
-    <!--<select [(ngModel)] = "userDetails.categoryid.categoryid" (change)="onSelect(userDetails.categoryid)" name = "categoryid">
+    <!-- <input name = "cat" [(ngModel)] = "categoryFetch"><br><br> -->
+    <select [(ngModel)] = "categoryFetch" (change)="onSelect(categoryFetch)" name = "categoryid">
       <option selected disabled value="">Please Select Option</option>
       <option *ngFor="let category of categoryType" [ngValue]="category.categoryid">{{category.name}}</option>
-    </select><br><br>-->
+    </select><br><br>
     <b>Brand : </b>
-  <input name = "brand" [(ngModel)] = "brandFetch"><br><br>
-    <!--<select [(ngModel)] = "userDetails.brandid.brandid" name = "brandid">
+  <!-- <input name = "brand" [(ngModel)] = "brandFetch"><br><br> -->
+    <select [(ngModel)] = "brandFetch" name = "brandid">
       <option selected disabled value="">Please Select Option</option>
       <option *ngFor="let brand of changeBrand" [ngValue]="brand.brandid">{{brand.name}}</option>
-    </select><br><br>-->
+    </select><br><br>
     <b>Customer Type : </b><select [(ngModel)]="userDetails.usertype" name = "customertype">
         <option selected disabled value="Retailer">Please Select Option</option>
         <option *ngFor="let usertype of usertype" [ngValue]="usertype">{{usertype}}</option>

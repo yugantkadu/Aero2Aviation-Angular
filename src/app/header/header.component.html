@@ -50,6 +50,13 @@
   </span>
 
   <span *ngIf="usertype !== 'admin' && usertype !== null">
+    <a><b>Type</b>:  {{userDetails?.categoryid.name }}</a>
+    <a *ngIf="userDetails?.usertype === 'retailer'"><b>Retailer name</b>: {{userDetails.firstname}}</a>
+    <a *ngIf="userDetails?.usertype === 'manufacturer'"><b>Manufacturer name</b>: {{userDetails.firstname}}</a>
+
+    <a *ngIf="userDetails?.usertype === 'manufacturer'" routerLink="user-add-product" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Add Vehicle</a>
+
     <a routerLink="/user-profile" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">Profile</a>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{UserProfileService} from './user-profile.service';
 import {UserProfileResult} from './user-profile-result';
+import { User } from 'src/app/auth/user';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,14 +10,14 @@ import {UserProfileResult} from './user-profile-result';
 })
 export class UserProfileComponent implements OnInit {
 
-  userProfileResult : UserProfileResult
+  user : User;
 
   constructor(private userProfileService:UserProfileService) { }
 
   ngOnInit(): void {
-    this.userProfileService.CallUserProfile().subscribe ((data: any) => {
+    this.userProfileService.CallUserProfile(sessionStorage.getItem('userId')).subscribe ((data: any) => {
       console.log(data);
-      this.userProfileResult = data;
+      this.user = data;
       //console.log(this.userProfileResult);
    });
   }
