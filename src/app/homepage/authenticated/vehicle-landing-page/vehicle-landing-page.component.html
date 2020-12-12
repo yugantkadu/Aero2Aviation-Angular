@@ -1,20 +1,26 @@
-<h1>Category</h1>
-<table>
+<img src="{{userDetails?.brandid.image}}" class="center">
+<table *ngIf="products?.length !== 0">
   <tr>
     <th>Image</th>
     <th>Brand name</th>
-    <th>Name</th>
+    <th>Manufacturer Name</th>
+    <th>Product Name</th>
     <th>Description</th>
-    <th>Quantity Instock</th>
+    <th>Available Stock</th>
     <th>Buyprice</th>
   </tr>
   <tr *ngFor="let pro of products">
     <td><p><img src="{{pro.productimage}}"></p></td>
-    <td>{{pro.brandid.brandname}}</td>
+    <td>{{pro.brandid.name}}</td>
     <td><p>{{pro.manufacturerid.firstname}}</p></td>
     <td><p>{{pro.productname}}</p></td>
     <td><p>{{pro.productdescription}}</p></td>
     <td><p>{{pro.quantityinstock}}</p></td>
     <td><p>{{pro.buyprice}}</p></td>
+    <td *ngIf="userDetails?.usertype === 'retailer'"><p><input type="number" [(ngModel)]="quantityinstockSelected" (keyup)="validateStock()" style="width: 4em"></p></td>
+    <td *ngIf="userDetails?.usertype === 'retailer'"><a href="https://localhost:44317/Razorpay/Index"><input type="button" value="Buy Now"></a></td>
   </tr>
 </table>
+<div *ngIf="products?.length === 0">
+  <h1>Sorry....No Products Present</h1>
+</div>

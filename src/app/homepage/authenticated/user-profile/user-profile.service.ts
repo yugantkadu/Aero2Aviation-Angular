@@ -11,9 +11,9 @@ export class UserProfileService
 {
   constructor(private http : HttpClient) { }
 
-  CallUserProfile(): Observable<any>
+  CallUserProfile(userId: string): Observable<any>
   {
-    const url = 'http://localhost:7071/user/allUsers';
+    const url = 'http://localhost:7071/user/userById/' + userId;
     return this.http.get<any>(url);
   }
 }
