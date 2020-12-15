@@ -35,26 +35,27 @@ export class AdminComponent implements OnInit {
     this.route.paramMap.subscribe( (params: ParamMap) => {
       this.routeName = params.get('routeName');
       console.log(this.routeName);
+
+      if(this.routeName === 'user'){
+        this.callAllUsers();
+      }
+      else if(this.routeName === 'category') {
+           this.invokeCategory();
+      }
+      else if(this.routeName === 'brand') {
+
+      }
+      else if(this.routeName === 'product') {
+           this.invokeAllProduct();
+
+      }
+      else if(this.routeName === 'order') {
+
+      }
+      else if(this.routeName === 'payment') {
+
+      }
     });
-    if(this.routeName === 'user'){
-      this.callAllUsers();
-    }
-    else if(this.routeName === 'category') {
-         this.invokeCategory();  
-    }
-    else if(this.routeName === 'brand') {
-
-    }
-    else if(this.routeName === 'product') {
-         this.invokeAllProduct();
-
-    }
-    else if(this.routeName === 'order') {
-
-    }
-    else if(this.routeName === 'payment') {
-
-    }
   }
 
   callAllUsers(){
@@ -110,15 +111,15 @@ export class AdminComponent implements OnInit {
     else {
       this.invokeCategory();
     }
-      
+
     }
     else if(this.routeName === 'brand'){
-      
-      
+
+
     }
     else if(this.routeName === 'order')
     {
-      
+
     }
     else if(this.routeName === 'product'){
 
@@ -136,7 +137,7 @@ export class AdminComponent implements OnInit {
     }
     }
     else if(this.routeName === 'payment'){
-    
+
     }
   }
 

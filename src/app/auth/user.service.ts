@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { UserData } from './user-data.model';
 import { Router } from '@angular/router';
+import { UserResult } from './user-result';
 const url = 'http://localhost:7071';
 
 @Injectable({
@@ -14,11 +15,11 @@ const url = 'http://localhost:7071';
 export class UserService {
   private authStatusListener = new Subject <boolean>();
   constructor(private http: HttpClient, private router: Router) { }
-  callRegisterUserDetails(user: User ): Observable<any>
+  callRegisterUserDetails(user: User ): Observable<UserResult>
   {
     console.log('Service Layer');
     console.log(user);
-    return this.http.post<any>(url + '/user/registration', user);
+    return this.http.post<UserResult>(url + '/user/registration', user);
 
   }
 
