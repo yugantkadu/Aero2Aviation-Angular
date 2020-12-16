@@ -1,19 +1,56 @@
 <div align = "center">
     <h1>Add Vehicle By Manufacturer</h1>
     <br><br> 
-    <form #addVehicalPost="ngForm" (ngSubmit)="onAddProduct(addVehicalPost.value)" >
+    <form #addVehicalPost="ngForm" (ngSubmit)="addVehicalPost.form.valid && onAddProduct(addVehicalPost.value)" >
     
-    <b>Brand Name : </b><input type="text" name="brandid"  placeholder="brandid" disabled type="brandid" ngModel required>
-    <br><br>
-    <b>Manufacturer Name : </b><input type="text" name="manufacturerid" disabled placeholder="manufacturerid" type="manufacturerid" ngModel required><br>
-    <br><b>Product Name : </b><input type="text" name="productname"  placeholder="productname" type="productname" ngModel required><br>
-    <br><b>Product Description : </b><input type="text" name="productdescription" placeholder="productDescription" type="productdescription" ngModel required><br>
-    <br><b>Product Image : </b><input type="text" name="productimage"  placeholder="Please Enter the Path of Image" type="productimage" ngModel required><br>
-    <br><b>Product Quantity : </b><input type="text" name="quantityinstock"  placeholder="quantityInStock" type="quantityinstock" ngModel required><br>
-    <br><b>Buy Price : </b><input type="text" name="buyprice"  placeholder="buyPrice" type="buyprice" ngModel required><br>
-    <br><br> 
-       <button type="submit">Add Products</button>
-    </form><br>
+     <b>Brand Name : </b><input type="text" name="brandid"  placeholder="brandid" disabled type="brandid" ngModel required>
+     <br><br>
+     <b>Manufacturer Name : </b><input type="text" name="manufacturerid" disabled placeholder="manufacturerid" type="manufacturerid" ngModel required><br>
+     <br>
+
+     <div  class="form-group">
+       <label><b>Product* : </b></label>
+       <input name = "productname" ngModel  placeholder="Please Enter the Product Name"class="form-control" 
+                    #productname="ngModel" required pattern="[a-zA-Z]{2,20}"><br><br>
+       <span *ngIf ="addVehicalPost.submitted && productname.errors?.required">Product Name is mandantory , Please enter it</span>
+       <span *ngIf = "addVehicalPost.submitted && productname.errors?.pattern">Invalid name</span>
+     </div>
+     
+     <div  class="form-group">
+       <label><b>Product Description* : </b></label>
+       <input name = "productname" ngModel  placeholder="Please Enter the Product Description" class="form-control"
+        #productdescription="ngModel" required><br><br>
+       <span *ngIf ="addVehicalPost.submitted && productdescription.errors?.required">Product Description is mandantory , Please enter it</span>
+     </div>
+     
+     <div  class="form-group">
+       <label><b>Product Image* : </b></label>
+       <input name = "productimage" ngModel  placeholder="Please Enter the Image URL" class="form-control"
+        #productimage="ngModel" required><br><br>
+       <span *ngIf ="addVehicalPost.submitted && productimage.errors?.required">Product Image is mandantory , Please enter it</span>
+     </div>
+    
+     <div  class="form-group">
+       <label><b>Product Quantity* : </b></label>
+       <input name = "quantityinstock" ngModel  placeholder="Please Enter Quantity In Stock"class="form-control" 
+                     #quantityinstock="ngModel" required pattern="[0-9]{1,20}"><br><br>
+       <span *ngIf ="addVehicalPost.submitted && quantityinstock.errors?.required">Product Quantity is mandantory , Please enter it</span>
+       <span *ngIf = "addVehicalPost.submitted && quantityinstock.errors?.pattern">Invalid Quantity, Please Enter Valid Quantity</span>
+     </div>
+    
+     <div  class="form-group">
+       <label><b>Buy Price* : </b></label>
+       <input name = "buyprice" ngModel  placeholder="Please Enter Buy Price"class="form-control" 
+                     #buyPrice="ngModel" required pattern="[0-9]{1,20}"><br><br>
+       <span *ngIf ="addVehicalPost.submitted && buyPrice.errors?.required">Buy Price is mandantory , Please enter it</span>
+       <span *ngIf = "addVehicalPost.submitted && buyPrice.errors?.pattern">Invalid Quantity, Please Enter Valid Price</span>
+     </div>
+     <br><br> 
+      
+        
+      <button type="submit">Add Products</button>
+
+   </form><br>
     
       <div *ngIf="vehicleAddResult != undefined ">
     

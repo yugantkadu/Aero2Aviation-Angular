@@ -41,10 +41,10 @@ export class UserRegistrationComponent implements OnInit {
       console.log(this.categoryType);
     });
 
-    this.checkDisabled()
+   // this.checkDisabled()
   }
 
-  checkDisabled(){
+  /*checkDisabled(){
       if((this.userDetails.firstname === undefined || this.userDetails.firstname === "") || (this.userDetails.lastname === undefined || this.userDetails.lastname === "") ) {
         //console.log("true");
         return true;
@@ -53,7 +53,7 @@ export class UserRegistrationComponent implements OnInit {
         //console.log("false");
         return false;
       }
-  }
+  } */
 
   onSelect(categoryId: number) {
     this.changeBrand = this.brandType.filter((item) => item.categoryid === categoryId);
