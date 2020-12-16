@@ -8,7 +8,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import {Products} from 'src/app/homepage/authenticated/vehicle-add/products';
 import {VehicleAddService} from 'src/app/homepage/authenticated/vehicle-add/vehicle-add.service';
 import {VehicleCategoryDetailsService} from 'src/app/homepage/non-authenticated/vehicle-category-details/vehicle-category-details.service';
-
+import {VehicleBrandDetailsService} from 'src/app/homepage/non-authenticated/vehicle-brand-details/vehicle-brand-details.service'
 
 @Component({
   selector: 'app-admin',
@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
   users: User;
   products : Products;
   category : Category;
+  brand : Brands;
   brandType: any;
   changeBrand: Brands;
   categoryType: Category;
@@ -28,7 +29,7 @@ export class AdminComponent implements OnInit {
 
   modifyStatus: any;
   txt: string;
-  constructor(private userService: UserService,private vehicleCategoryService:VehicleCategoryDetailsService,private vehicleAddService:VehicleAddService, private adminService: AdminService,private route: ActivatedRoute) { }
+  constructor(private userService: UserService,private vehicleCategoryService:VehicleCategoryDetailsService,private vehicleBrandService:VehicleBrandDetailsService,private vehicleAddService:VehicleAddService, private adminService: AdminService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //this.users = new User();
@@ -43,7 +44,7 @@ export class AdminComponent implements OnInit {
            this.invokeCategory();
       }
       else if(this.routeName === 'brand') {
-
+           this.invokeBrand();
       }
       else if(this.routeName === 'product') {
            this.invokeAllProduct();
@@ -82,6 +83,15 @@ export class AdminComponent implements OnInit {
       this.category = data;
     });;
   }
+
+    invokeBrand()
+  {
+     this.vehicleBrandService.invokeBrandDetails().subscribe((data: Brands) => {
+      console.log(data);
+      this.brand = data;
+    });
+  }
+  
   modify(obj: any) {
     if(this.routeName === 'user'){
       this.modifyStatus = 'Do you want to modify User with UserId ' + obj.userid;
@@ -111,12 +121,23 @@ export class AdminComponent implements OnInit {
     else {
       this.invokeCategory();
     }
-
-    }
+  }
     else if(this.routeName === 'brand'){
 
-
+      this.modifyStatus = 'Do you want to modify Brand with BrandId ' + obj.brandid;
+      const mod = confirm(this.modifyStatus);
+  
+      if (mod === true) {
+        this.adminService.invokeModifyBrand(obj).subscribe((data: any) => {
+          console.log(data);
+        });
+        alert('BrandId ' + obj.brandid + ' has been modified ');
+      }
+      else {
+        this.invokeBrand();
+      }
     }
+
     else if(this.routeName === 'order')
     {
 

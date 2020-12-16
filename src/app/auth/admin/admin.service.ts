@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import { User } from '../user';
 import {Products} from 'src/app/homepage/authenticated/vehicle-add/products'
 import {Category} from 'src/app/homepage/non-authenticated/vehicle-category-details/category'
+import {Brands} from 'src/app/homepage/non-authenticated/vehicle-brand-details/brands'
+
 
 const url = 'http://localhost:7071';
 
@@ -29,5 +31,11 @@ export class AdminService {
     console.log(category);
     const url = 'http://localhost:7071/admin/modifyCategory/';
     return this.http.put<any>( url + category.categoryid, category);
+  }
+
+  invokeModifyBrand(brand: Brands): Observable<any>{
+    console.log(brand);
+    const url = 'http://localhost:7071/admin/modifyBrand/';
+    return this.http.put<any>( url + brand.brandid, brand);
   }
 }

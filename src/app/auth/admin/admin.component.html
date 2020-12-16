@@ -54,7 +54,21 @@
 
 <table *ngIf="routeName === 'brand'">
   <tr>
-    <td>Heelo Brand</td>
+    <th>BrandId</th>
+    <th>CategoryId</th>
+    <th>BrandName</th>
+    <th>BrandDescription</th>
+    <th>Image</th>
+  </tr>
+  <tr *ngFor="let br of brand">
+    <td><input type="text" [(ngModel)]="br.brandid" disabled></td>
+    <td><input type="text" [(ngModel)]="br.categoryid.categoryid"></td>
+    <td><input type="text" [(ngModel)]="br.name"></td>
+    <td><input type="text" [(ngModel)]="br.branddescription"></td>
+    <td><input type="text" [(ngModel)]="br.image"></td>
+
+
+    <td><input type="button" value="Modify" (click)="modify(br)"></td>
   </tr>
  </table>
 
