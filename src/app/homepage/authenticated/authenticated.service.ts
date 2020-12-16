@@ -17,4 +17,8 @@ export class AuthenticatedService {
   invokeUserById(userId: string): Observable<User>{
     return this.http.get<User>(url + '/user/userById/' + userId);
   }
+
+  // invokeredirectDotnet(name: string){
+  //   this.http.get<any>('https://localhost:44317/Razorpay/Index' + name);
+  // }
 }
