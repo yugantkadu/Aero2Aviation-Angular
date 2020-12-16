@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/auth/user';
 import { AuthenticatedService } from '../authenticated.service';
+import { Router } from '@angular/router';
+import { Products } from '../vehicle-add/products';
 
 @Component({
   selector: 'app-vehicle-landing-page',
@@ -12,7 +14,14 @@ export class VehicleLandingPageComponent implements OnInit {
   userDetails: User;
   quantityinstock: number;
   quantityinstockSelected: number;
-  constructor(private authenticatedService: AuthenticatedService) { }
+  manufacturerName: string;
+  brandImg:  string;
+  retailerName: string;
+  email: string;
+  contact: number;
+
+  orderObj: any;
+  constructor(private authenticatedService: AuthenticatedService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -24,6 +33,7 @@ export class VehicleLandingPageComponent implements OnInit {
           console.log(data);
           this.products = data.filter((item) => ((item?.brandid.brandid === this.userDetails?.brandid.brandid) && (item?.brandid.categoryid === this.userDetails?.brandid.categoryid)));
           console.log(this.products);
+          console.log(this.products.productname);
         });
     });
 
@@ -38,6 +48,16 @@ export class VehicleLandingPageComponent implements OnInit {
       this.quantityinstockSelected = 0;
     }
   console.log(this.quantityinstockSelected);
+  }
+
+  redirectDotnet(){
+    //this.orderObj = {orderid: 123, orderamount: this.products.buyprice, manufacturerName: this.products.manufacturerid.firstname ,brandImg:  this.products.brandid.image, retailerName: this.userDetails.firstname, email: this.userDetails.email, contact: this.userDetails.mobileno};
+    //this.router.navigate(['https://localhost:44317/Razorpay/Index']);
+    //'https://localhost:44317/Razorpay/Index?orderamount='+ this.products.buyprice+'?manufacturerName='+this.products.manufacturerid?.firstname+'?brandImg='+this.products.brandid?.image+'?retailerName='+ this.userDetails.firstname+'?email='+this.userDetails.email+'?contact='+this.userDetails.mobileno;
+    //window.location.href = 'https://localhost:44317/Razorpay/Index?orderamount='+ this.products.buyprice+'?manufacturerName='+this.products.manufacturerid?.firstname+'?brandImg='+this.products.brandid?.image+'?retailerName='+ this.userDetails.firstname+'?email='+this.userDetails.email+'?contact='+this.userDetails.mobileno;
+    window.location.href = 'https://localhost:44317/Razorpay/Index?orderAmount='+this.products[0].buyprice+'&manufacturerName='+this.products[0].manufacturerid.firstname+' '+this.products[0].manufacturerid.lastname+'&brandImg='+this.products[0].brandid?.image+'&retailerName='+ this.userDetails.firstname+' '+this.userDetails.lastname+'&email='+this.userDetails.email+'&contact='+this.userDetails.mobileno;
+    //this.authenticatedService.invokeredirectDotnet("yugant");
+    console.log("Hello");
   }
 
   // filterProductDetails(){
