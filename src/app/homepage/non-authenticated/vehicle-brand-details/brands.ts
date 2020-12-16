@@ -1,8 +1,14 @@
+import { Category } from "../vehicle-category-details/category";
+
 export class Brands {
 
-  private  brandid: number;
-  private  categoryid: number;
-  private  name: string;
-  private  branddescription: string;
-  private  image: string;
+  public  brandid: number;
+  public  categoryid?: Category;
+  public  name?: string;
+  public  branddescription?: string;
+  public  image?: string;
+
+  constructor() {
+    this.brandid = 0;
+  }
 }

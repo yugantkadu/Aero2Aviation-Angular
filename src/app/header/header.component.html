@@ -1,8 +1,16 @@
 <div class="header">
-  <a  routerLink="/" class="logo">Auto2Aviation</a>
+  <span *ngIf="usertype === null">
+    <a  routerLink="/" class="logo">Auto2Aviation</a>
+  </span>
+  <span *ngIf="usertype === 'admin' && usertype !== null">
+    <a  [routerLink]="['/admin', 'user']" class="logo">Auto2Aviation</a>
+  </span>
+  <span *ngIf="usertype !== 'admin' && usertype !== null">
+    <a  routerLink="/user-landing-page" class="logo">Auto2Aviation</a>
+  </span>
   <div class="header-right">
 
-    <span *ngIf="isUserLoggedIn()">
+    <span *ngIf="usertype === null">
     <a routerLink="/" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">Home</a>
 
@@ -19,24 +27,39 @@
     [routerLinkActiveOptions]="{exact:true}">Register</a>
    </span>
 
-  <span *ngIf="usertype === 'admin' && !isUserLoggedIn()">
-    <a routerLink="/admin" routerLinkActive="active"
+  <span *ngIf="usertype === 'admin' && usertype !== null">
+    <a [routerLink]="['/admin', 'user']" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">User</a>
 
-    <a routerLink="" routerLinkActive="active"
+    <a [routerLink]="['/admin', 'category']" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">Category</a>
 
-    <a routerLink="" routerLinkActive="active"
+    <a [routerLink]="['/admin', 'brand']" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">Brand</a>
 
-    <a routerLink="" routerLinkActive="active"
+    <a [routerLink]="['/admin', 'product']" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">Product</a>
 
-    <a routerLink="" routerLinkActive="active"
+    <a [routerLink]="['/admin', 'order']" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">Order</a>
 
-    <a routerLink="" routerLinkActive="active"
+    <a [routerLink]="['/admin', 'payment']" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">Payment</a>
+    <a routerLink="/" (click)="logOut()" *ngIf="!isUserLoggedIn()">Logout</a>
+
+  </span>
+
+  <span *ngIf="usertype !== 'admin' && usertype !== null">
+    <a><b>Type</b>:  {{userDetails?.categoryid.name }}</a>
+    <a *ngIf="userDetails?.usertype === 'retailer'"><b>Retailer name</b>: {{userDetails.firstname}}</a>
+    <a *ngIf="userDetails?.usertype === 'manufacturer'"><b>Manufacturer name</b>: {{userDetails.firstname}}</a>
+
+    <a *ngIf="userDetails?.usertype === 'manufacturer'" routerLink="user-add-product" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Add Vehicle</a>
+
+    <a routerLink="/user-profile" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact:true}">Profile</a>
+
     <a routerLink="/" (click)="logOut()" *ngIf="!isUserLoggedIn()">Logout</a>
 
   </span>

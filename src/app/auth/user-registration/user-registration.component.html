@@ -1,48 +1,70 @@
 
 <h1 align = "center">Registration to Auto2aviation</h1><br><br>
+<div *ngIf="userResult != undefined ">
 
+</div>
 <form>
-    <b>First Name : </b><input name = "firstname" [(ngModel)] = "userDetails.firstname"><br><br>
+    <b>First Name : </b><input name = "firstname" [(ngModel)] = "userDetails.firstname"
+    id="firstname" name="firstname" class="form-control"
+      required minlength="4"
+      #name="ngModel"><br><br>
+
+
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+
+    <div *ngIf="name.errors.required">
+    Name is required.
+    </div>
+    <div *ngIf="name.errors.minlength">
+    Name must be at least 4 characters long.
+    </div>
+
+    </div>
     <b>Last Name : </b><input name = "lastname" [(ngModel)] = "userDetails.lastname"><br><br>
+
     <b>Email : </b><input name = "email" [(ngModel)] = "userDetails.email" type="email"><br><br>
+
     <b>Password : </b><input name = "password" [(ngModel)] = "userDetails.password" type="password"><br><br>
+
     <b>Mobile Number : </b><input name = "mobileno" [(ngModel)] = "userDetails.mobileno"><br><br>
+
     <b>Address : </b><input name = "address" [(ngModel)] = "userDetails.address"><br><br>
+
     <b>Pincode : </b><input name = "pincode" [(ngModel)] = "userDetails.pincode"><br><br>
-    <b>Category : </b>  
-    <select [(ngModel)] = "userDetails.categoryid" (change)="onSelect(userDetails.categoryid)" name = "categoryid">
+
+    <b>Category : </b>
+    <!-- <input name = "cat" [(ngModel)] = "categoryFetch"><br><br> -->
+    <select [(ngModel)] = "categoryFetch" (change)="onSelect(categoryFetch)" name = "categoryid">
       <option selected disabled value="">Please Select Option</option>
       <option *ngFor="let category of categoryType" [ngValue]="category.categoryid">{{category.name}}</option>
-    </select><br><br> 
+    </select><br><br>
+
     <b>Brand : </b>
-    <select [(ngModel)] = "userDetails.brandid" name = "brandid">
+  <!-- <input name = "brand" [(ngModel)] = "brandFetch"><br><br> -->
+    <select [(ngModel)] = "brandFetch" name = "brandid">
       <option selected disabled value="">Please Select Option</option>
       <option *ngFor="let brand of changeBrand" [ngValue]="brand.brandid">{{brand.name}}</option>
     </select><br><br>
+
     <b>Customer Type : </b><select [(ngModel)]="userDetails.usertype" name = "customertype">
         <option selected disabled value="Retailer">Please Select Option</option>
         <option *ngFor="let usertype of usertype" [ngValue]="usertype">{{usertype}}</option>
       </select>
     <br><br><br>
-    
-    <button (click)="callRegister()" width="50"> Register</button>
-    <div *ngIf="userResult != undefined ">
 
-      <b>{{ userResult.message}}</b>
+    <button (click)="callRegister()" width="50" [disabled]="checkDisabled()"> Register</button>
 
-   </div>
     <br><br><br>
   </form>
 
-  
+
    <div *ngIf="userResult != undefined ">
 
       <b>{{ userResult.message}}</b>
 
 
    </div>
-
-
 
 
 

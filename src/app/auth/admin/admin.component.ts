@@ -4,6 +4,11 @@ import { Category } from 'src/app/homepage/non-authenticated/vehicle-category-de
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { AdminService } from './admin.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import {Products} from 'src/app/homepage/authenticated/vehicle-add/products';
+import {VehicleAddService} from 'src/app/homepage/authenticated/vehicle-add/vehicle-add.service';
+import {VehicleCategoryDetailsService} from 'src/app/homepage/non-authenticated/vehicle-category-details/vehicle-category-details.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -11,18 +16,46 @@ import { AdminService } from './admin.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+
   users: User;
+  products : Products;
+  category : Category;
   brandType: any;
   changeBrand: Brands;
   categoryType: Category;
+  routeName: string;
+
 
   modifyStatus: any;
   txt: string;
-  constructor(private userService: UserService, private adminService: AdminService) { }
+  constructor(private userService: UserService,private vehicleCategoryService:VehicleCategoryDetailsService,private vehicleAddService:VehicleAddService, private adminService: AdminService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //this.users = new User();
-    this.callAllUsers();
+    this.route.paramMap.subscribe( (params: ParamMap) => {
+      this.routeName = params.get('routeName');
+      console.log(this.routeName);
+
+      if(this.routeName === 'user'){
+        this.callAllUsers();
+      }
+      else if(this.routeName === 'category') {
+           this.invokeCategory();
+      }
+      else if(this.routeName === 'brand') {
+
+      }
+      else if(this.routeName === 'product') {
+           this.invokeAllProduct();
+
+      }
+      else if(this.routeName === 'order') {
+
+      }
+      else if(this.routeName === 'payment') {
+
+      }
+    });
   }
 
   callAllUsers(){
@@ -32,18 +65,79 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  modify(user: User) {
-    this.modifyStatus = 'Do you want to modify User with UserId ' + user.userid;
+
+  invokeAllProduct()
+  {
+    console.log("Invoke Product Call");
+    this.vehicleAddService.invokeProductDetails().subscribe((data: Products) => {
+      console.log(data);
+      this.products = data;
+    });;
+  }
+
+  invokeCategory()
+  {
+     this.vehicleCategoryService.invokeCategoryDetails().subscribe((data: Category) => {
+      console.log(data);
+      this.category = data;
+    });;
+  }
+  modify(obj: any) {
+    if(this.routeName === 'user'){
+      this.modifyStatus = 'Do you want to modify User with UserId ' + obj.userid;
+      const mod = confirm(this.modifyStatus);
+
+      if (mod === true) {
+        this.adminService.invokeModifyUser(obj).subscribe((data: any) => {
+          console.log(data);
+        });
+        alert('Userid ' + obj.userid + ' has been modified ');
+      }
+      else {
+        this.callAllUsers();
+      }
+    }
+    else if(this.routeName === 'category'){
+
+    this.modifyStatus = 'Do you want to modify User with UserId ' + obj.categoryid;
     const mod = confirm(this.modifyStatus);
 
     if (mod === true) {
-      this.adminService.invokeModifyUser(user).subscribe((data: any) => {
+      this.adminService.invokeModifyCategory(obj).subscribe((data: any) => {
         console.log(data);
-      });
-      alert('Userid ' + user.userid + ' has been modified ');
+      });;
+      alert('CategoryId ' + obj.categoryid + ' has been modified ');
     }
     else {
-      this.callAllUsers();
+      this.invokeCategory();
+    }
+
+    }
+    else if(this.routeName === 'brand'){
+
+
+    }
+    else if(this.routeName === 'order')
+    {
+
+    }
+    else if(this.routeName === 'product'){
+
+      this.modifyStatus = 'Do you want to modify User with UserId ' + obj.productid;
+    const mod = confirm(this.modifyStatus);
+
+    if (mod === true) {
+      this.adminService.invokeModifyProduct(obj).subscribe((data: any) => {
+        console.log(data);
+      });
+      alert('Productid ' + obj.productid + ' has been modified ');
+    }
+    else {
+      this.invokeAllProduct();
+    }
+    }
+    else if(this.routeName === 'payment'){
+
     }
   }
 

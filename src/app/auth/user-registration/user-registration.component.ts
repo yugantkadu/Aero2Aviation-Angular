@@ -3,6 +3,7 @@ import { Brands } from 'src/app/homepage/non-authenticated/vehicle-brand-details
 import { VehicleBrandDetailsService } from 'src/app/homepage/non-authenticated/vehicle-brand-details/vehicle-brand-details.service';
 import { Category } from 'src/app/homepage/non-authenticated/vehicle-category-details/category';
 import { VehicleCategoryDetailsService } from 'src/app/homepage/non-authenticated/vehicle-category-details/vehicle-category-details.service';
+import { Router } from '@angular/router';
 
 import {User} from '../user';
 import {UserService} from '../user.service';
@@ -22,21 +23,36 @@ export class UserRegistrationComponent implements OnInit {
   categoryType: Category;
   brandType: any;
   changeBrand: Brands;
+  categoryFetch: number;
+  brandFetch: number;
 
-  constructor(private userRegistrationService: UserService, private brandService: VehicleBrandDetailsService, private categoryService: VehicleCategoryDetailsService) {
+  constructor(private userRegistrationService: UserService, private brandService: VehicleBrandDetailsService, private categoryService: VehicleCategoryDetailsService, private router: Router) {
     this.userDetails = new User();
 
   }
 
   ngOnInit(): void {
-    this.brandService.invokeBrandDetails().subscribe((data: any) => {
+    this.brandService.invokeBrandDetails().subscribe((data: Brands) => {
       this.brandType = data;
       console.log(this.brandType);
     });
-    this.categoryService.invokeCategoryDetails().subscribe((data: any) => {
+    this.categoryService.invokeCategoryDetails().subscribe((data: Category) => {
       this.categoryType = data;
       console.log(this.categoryType);
     });
+
+    this.checkDisabled()
+  }
+
+  checkDisabled(){
+      if((this.userDetails.firstname === undefined || this.userDetails.firstname === "") || (this.userDetails.lastname === undefined || this.userDetails.lastname === "") ) {
+        //console.log("true");
+        return true;
+      }
+      else{
+        //console.log("false");
+        return false;
+      }
   }
 
   onSelect(categoryId: number) {
@@ -48,15 +64,28 @@ export class UserRegistrationComponent implements OnInit {
   {
 
     console.log(this.userDetails);
-
-    this.userRegistrationService.callRegisterUserDetails(this.userDetails).subscribe(
-      (data)=>{
+    console.log(this.categoryFetch);
+    const alterData = {
+      firstname : this.userDetails.firstname,
+      lastname: this.userDetails.lastname,
+      email: this.userDetails.email,
+      password: this.userDetails.password,
+      mobileno : this.userDetails.mobileno,
+      address: this.userDetails.address,
+      pincode: this.userDetails.pincode,
+      categoryid: {categoryid : this.categoryFetch},
+      brandid: {brandid: this.brandFetch},
+      usertype : this.userDetails.usertype};
+    this.userRegistrationService.callRegisterUserDetails(alterData).subscribe(
+      (data: UserResult)=>{
 
         //console.log(data);
 
         this.userResult = data ;
         console.log(this.userResult);
         this.userDetails = null;
+        alert(this.userResult.message);
+        this.router.navigate(['/user-login']);
         /*this.userDetails.firstname= " ";
         this.userDetails.lastname = "";
         this.userDetails.email = "";

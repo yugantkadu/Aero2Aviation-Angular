@@ -1,4 +1,4 @@
-<table>
+<table *ngIf="routeName === 'user'">
   <tr>
     <th>Userid</th>
     <th>Firstname</th>
@@ -24,11 +24,75 @@
     <td><input type="text" [(ngModel)]="user.address"></td>
     <td><input type="text" [(ngModel)]="user.pincode"></td>
 
-   <td><input type="text" [(ngModel)]="user.categoryid"></td>
-   <td><input type="text" [(ngModel)]="user.brandid"></td>
+   <td><input type="text" [(ngModel)]="user.categoryid.categoryid"></td>
+   <td><input type="text" [(ngModel)]="user.brandid.brandid"></td>
 
     <td><input type="text" [(ngModel)]="user.usertype"></td>
     <td><input type="button" value="Modify" (click)="modify(user)"></td>
     <td><input type="button" value="Delete" (click)="delete(user.userid)"></td>
   </tr>
 </table>
+
+<table *ngIf="routeName === 'category'">
+  <tr>
+    <th>CategoryId</th>
+    <th>CategoryName</th>
+    <th>categoryDescription</th>
+    <th>image</th>
+  </tr>
+  <tr *ngFor="let cat of category">
+    <td><input type="text" [(ngModel)]="cat.categoryid" disabled></td>
+    <td><input type="text" [(ngModel)]="cat.name"></td>
+    <td><input type="text" [(ngModel)]="cat.categorydescription"></td>
+    <td><input type="text" [(ngModel)]="cat.image"></td>
+
+
+    <td><input type="button" value="Modify" (click)="modify(cat)"></td>
+   <!--<td><input type="button" value="Delete" (click)="delete(user.userid)"></td>-->
+  </tr>
+</table>
+
+<table *ngIf="routeName === 'brand'">
+  <tr>
+    <td>Heelo Brand</td>
+  </tr>
+ </table>
+
+ <table *ngIf="routeName === 'order'">
+  <tr>
+    <td>Heelo order</td>
+  </tr>
+ </table>
+
+ <table *ngIf="routeName === 'product'">
+  <tr>
+    <th>ProductId</th>
+    <th>BrandId</th>
+    <th>ManufacturerId</th>
+    <th>ProductName</th>
+    <th>ProductDescription</th>
+    <th>ProductImage</th>
+    <th>QuantityInStock</th>
+    <th>BuyPrice</th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td><input type="text" [(ngModel)]="product.productid" disabled></td>
+    <td><input type="text" [(ngModel)]="product.brandid.brandid"></td>
+    <td><input type="text" [(ngModel)]="product.manufacturerid.userid"></td>
+    <td><input type="text" [(ngModel)]="product.productname"></td>
+    <td><input type="text" [(ngModel)]="product.productdescription"></td>
+    <td><input type="text" [(ngModel)]="product.productimage"></td>
+    <td><input type="text" [(ngModel)]="product.quantityinstock"></td>
+    <td><input type="text" [(ngModel)]="product.buyprice"></td>
+
+
+     <td><input type="button" value="Modify" (click)="modify(product)"></td>
+ <!-- <td><input type="button" value="Delete" (click)="delete(user.userid)"></td>-->
+  </tr>
+ </table>
+
+ <table *ngIf="routeName === 'payment'">
+  <tr>
+    <td>Heelo payment</td>
+  </tr>
+ </table>

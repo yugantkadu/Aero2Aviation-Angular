@@ -6,14 +6,20 @@ import { UserRegistrationComponent } from './auth/user-registration/user-registr
 import { VehicleBrandDetailsComponent } from './homepage/non-authenticated/vehicle-brand-details/vehicle-brand-details.component';
 import { VehicleCategoryDetailsComponent } from './homepage/non-authenticated/vehicle-category-details/vehicle-category-details.component';
 import { VehicleLandingPageComponent } from './homepage/non-authenticated/vehicle-landing-page/vehicle-landing-page.component';
+import { VehicleLandingPageComponent as LandingPageComponent} from './homepage/authenticated/vehicle-landing-page/vehicle-landing-page.component';
+import { UserProfileComponent } from './homepage/authenticated/user-profile/user-profile.component';
+import { VehicleAddComponent } from './homepage/authenticated/vehicle-add/vehicle-add.component';
 
 const routes: Routes = [
   {path: '', component: VehicleLandingPageComponent},
+  {path: 'user-landing-page', component: LandingPageComponent},
+  {path: 'user-profile', component: UserProfileComponent},
+  {path: 'user-add-product', component: VehicleAddComponent},
   {path: 'vehicle-category', component: VehicleCategoryDetailsComponent},
   {path: 'vehicle-brand', component: VehicleBrandDetailsComponent},
   {path: 'user-login', component: UserLoginComponent},
   {path: 'user-register', component: UserRegistrationComponent},
-  {path: 'admin', component: AdminComponent},
+  {path: 'admin/:routeName', component: AdminComponent},
 ]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports
