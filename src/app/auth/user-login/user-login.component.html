@@ -4,18 +4,18 @@
   <!--<input type="text" name="email" ngModel placeholder="email" type="email" required><br>
   <input type="text" name="password" ngModel placeholder="password" type="password" required><br>-->
 
-   
+
   <div  class="form-group">
-    <label><b>Email* : </b></label>
-    <input type="email" name = "email" ngModel id="email" placeholder="Please Enter the Email" 
+    <label><b>Email <span>*</span> : </b></label>
+    <input type="email" name = "email" ngModel id="email" placeholder="Please Enter the Email"
     class="form-control" #email="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br><br>
     <span *ngIf ="loginForm.submitted && email.errors?.required">Email is mandantory , Please enter it</span>
     <span *ngIf = "loginForm.submitted && email.errors?.pattern">Email must be invalid email address</span>
-  
+
   </div>
 
   <div  class="form-group">
-    <label><b>Password* :</b></label>
+    <label><b>Password <span>*</span> :</b></label>
     <input type="password" name = "password" ngModel id="password" placeholder="Please Enter the Password"
     class="form-control" #password="ngModel" required ><br><br>
     <span *ngIf ="loginForm.submitted && password.errors?.required">Password is mandantory , Please enter it</span>

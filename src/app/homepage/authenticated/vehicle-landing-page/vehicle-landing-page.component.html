@@ -1,7 +1,7 @@
 <img src="{{userDetails?.brandid.image}}" class="center">
 <table *ngIf="products?.length !== 0">
   <tr>
-    <th>Image</th>
+    <th>Product Image</th>
     <th>Brand name</th>
     <th>Manufacturer Name</th>
     <th>Product Name</th>
@@ -12,7 +12,7 @@
   <tr *ngFor="let pro of products">
     <td><p><img src="{{pro.productimage}}"></p></td>
     <td>{{pro.brandid.name}}</td>
-    <td><p>{{pro.manufacturerid.firstname}}</p></td>
+    <td><p>{{pro.manufacturerid.firstname}} {{pro.manufacturerid.lastname}}</p></td>
     <td><p>{{pro.productname}}</p></td>
     <td><p>{{pro.productdescription}}</p></td>
     <td><p>{{pro.quantityinstock}}</p></td>

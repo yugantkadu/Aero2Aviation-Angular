@@ -12,7 +12,7 @@
     <th>Brandid</th>
     <th>Usertype</th>
     <th>Modify</th>
-    <th>Delete</th>
+    <!-- <th>Delete</th> -->
   </tr>
   <tr *ngFor="let user of users">
     <td><input type="text" [(ngModel)]="user.userid" disabled></td>
@@ -29,7 +29,7 @@
 
     <td><input type="text" [(ngModel)]="user.usertype"></td>
     <td><input type="button" value="Modify" (click)="modify(user)"></td>
-    <td><input type="button" value="Delete" (click)="delete(user.userid)"></td>
+    <!-- <td><input type="button" value="Delete" (click)="delete(user.userid)"></td> -->
   </tr>
 </table>
 
@@ -37,8 +37,8 @@
   <tr>
     <th>CategoryId</th>
     <th>CategoryName</th>
-    <th>categoryDescription</th>
-    <th>image</th>
+    <th>CategoryDescription</th>
+    <th>Image</th>
   </tr>
   <tr *ngFor="let cat of category">
     <td><input type="text" [(ngModel)]="cat.categoryid" disabled></td>
