@@ -56,7 +56,7 @@ export class UserRegistrationComponent implements OnInit {
   } */
 
   onSelect(categoryId: number) {
-    this.changeBrand = this.brandType.filter((item) => item.categoryid === categoryId);
+    this.changeBrand = this.brandType.filter((item) => item.categoryid.categoryid === categoryId);
     console.log(this.changeBrand);
   }
 
