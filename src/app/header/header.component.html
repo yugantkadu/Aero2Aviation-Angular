@@ -1,12 +1,12 @@
 <div class="header">
   <span *ngIf="usertype === null">
-    <a  routerLink="/" class="logo">Auto2Aviation</a>
+    <a  routerLink="/" class="logo">Auto2Auto</a>
   </span>
   <span *ngIf="usertype === 'admin' && usertype !== null">
-    <a  [routerLink]="['/admin', 'user']" class="logo">Auto2Aviation</a>
+    <a  [routerLink]="['/admin', 'user']" class="logo">Auto2Auto</a>
   </span>
   <span *ngIf="usertype !== 'admin' && usertype !== null">
-    <a  routerLink="/user-landing-page" class="logo">Auto2Aviation</a>
+    <a  routerLink="/user-landing-page" class="logo">Auto2Auto</a>
   </span>
   <div class="header-right">
 

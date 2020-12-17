@@ -31,7 +31,7 @@ export class VehicleLandingPageComponent implements OnInit {
 
         this.authenticatedService.invokeProductsDetails().subscribe(data=>{
           console.log(data);
-          this.products = data.filter((item) => ((item?.brandid.brandid === this.userDetails?.brandid.brandid) && (item?.brandid.categoryid === this.userDetails?.brandid.categoryid)));
+          this.products = data.filter((item) => ((item?.brandid.brandid === this.userDetails?.brandid.brandid) && (item?.brandid.categoryid.categoryid === this.userDetails?.brandid.categoryid.categoryid)));
           console.log(this.products);
           console.log(this.products.productname);
         });

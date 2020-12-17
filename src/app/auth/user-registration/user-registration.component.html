@@ -1,69 +1,69 @@
-<h1 align = "center">Registration to Auto2aviation</h1><br><br>
+<h1 align = "center">Registration to Auto2Auto</h1><br><br>
 <div *ngIf="userResult != undefined ">
 
 </div>
 <form (ngSubmit) = "f.form.valid && callRegister()" #f="ngForm" >
   <div  class="form-group">
-    <label><b>First Name* : </b></label>
-    <input name = "firstname" [(ngModel)] = "userDetails.firstname" id="firstname" 
+    <label><b>First Name <span>*</span> : </b></label>
+    <input name = "firstname" [(ngModel)] = "userDetails.firstname" id="firstname"
     class="form-control" #firstname="ngModel" required pattern="[a-zA-Z]{2,10}"><br><br>
     <span *ngIf ="f.submitted && firstname.errors?.required">Please Enter your First Name</span>
     <span *ngIf = "f.submitted && firstname.errors?.pattern">Invalid name</span>
 
   </div>
   <div  class="form-group">
-    <label><b>Last Name* : </b></label>
-    <input name = "lastname" [(ngModel)] = "userDetails.lastname" id="lastname" name="lastname" 
+    <label><b>Last Name <span>*</span> : </b></label>
+    <input name = "lastname" [(ngModel)] = "userDetails.lastname" id="lastname" name="lastname"
     class="form-control" #lastname="ngModel" required pattern="[a-zA-Z]{2,10}"><br><br>
     <span *ngIf ="f.submitted && lastname.errors?.required">Please Enter your Last Name</span>
     <span *ngIf = "f.submitted && lastname.errors?.pattern">Invalid name</span>
 
   </div>
-  
-  
+
+
   <div  class="form-group">
-    <label><b>Email* : </b></label>
-    <input type="email" name = "email" [(ngModel)] = "userDetails.email" id="email"  
+    <label><b>Email <span>*</span> : </b></label>
+    <input type="email" name = "email" [(ngModel)] = "userDetails.email" id="email"
     class="form-control" #email="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"><br><br>
     <span *ngIf ="f.submitted && email.errors?.required">Email is mandantory , Please enter it</span>
     <span *ngIf = "f.submitted && email.errors?.pattern">Email must be invalid email address</span>
-  
+
   </div>
 
-    
+
   <div  class="form-group">
-    <label><b>Password* :</b></label>
-    <input type="password" name = "password" [(ngModel)] = "userDetails.password" id="password"  
+    <label><b>Password <span>*</span> :</b></label>
+    <input type="password" name = "password" [(ngModel)] = "userDetails.password" id="password"
       class="form-control" #password="ngModel" required ><br><br>
     <span *ngIf ="f.submitted && password.errors?.required">Password is mandantory , Please enter it</span>
 
   </div>
 
   <div  class="form-group">
-    <label><b>Mobile Number* : </b></label>
-    <input name = "mobileno" [(ngModel)] = "userDetails.mobileno" id="mobileno" name="mobileno" 
+    <label><b>Mobile Number <span>*</span> : </b></label>
+    <input name = "mobileno" [(ngModel)] = "userDetails.mobileno" id="mobileno" name="mobileno"
       class="form-control" #mobileno="ngModel" required pattern= "^((\\+91-?)|0)?[0-9]{10}$"><br><br>
     <span *ngIf ="f.submitted && mobileno.errors?.required">Mobile Number is mandantory , Please enter it</span>
     <span *ngIf = "f.submitted && mobileno.errors?.pattern">Invalid number - Please Enter 10 digit Number</span>
   </div>
 
   <div  class="form-group">
-    <label><b>Address* : </b></label>
-    <input name = "address" [(ngModel)] = "userDetails.address" id="address"  
+    <label><b>Address <span>*</span> : </b></label>
+    <input name = "address" [(ngModel)] = "userDetails.address" id="address"
       class="form-control" #address="ngModel" required ><br><br>
     <span *ngIf ="f.submitted && address.errors?.required">Address is mandantory , Please enter it</span>
   </div>
-   
+
   <div  class="form-group">
     <label><b>Pincode* : </b></label>
-    <input name = "pincode" [(ngModel)] = "userDetails.pincode" id="pincode" name="pincode" 
+    <input name = "pincode" [(ngModel)] = "userDetails.pincode" id="pincode" name="pincode"
       class="form-control" #pincode="ngModel" required pattern="[0-9]{6,6}"><br><br>
     <span *ngIf ="f.submitted && pincode.errors?.required">Pincode is mandantory , Please enter it </span>
     <span *ngIf = "f.submitted && pincode.errors?.pattern">Invalid Pincode - Please Enter 6 digit Number</span>
   </div>
-    
+
   <div  class="form-group">
-    <label><b>Category* : </b></label>
+    <label><b>Category <span>*</span> : </b></label>
     <select [(ngModel)] = "categoryFetch" (change)="onSelect(categoryFetch)" name = "categoryid"
       class="form-control" #categoryid="ngModel" required>
     <option selected disabled value="">Please Select Option</option>
@@ -73,7 +73,7 @@
   </div>
 
   <div  class="form-group">
-  <label><b>Brand* : </b></label>
+  <label><b>Brand <span>*</span> : </b></label>
   <select [(ngModel)] = "brandFetch" name = "brandid"  class="form-control" #brandid="ngModel" required>
     <option selected disabled value="">Please Select Option</option>
     <option *ngFor="let brand of changeBrand" [ngValue]="brand.brandid">{{brand.name}}</option>
@@ -83,7 +83,7 @@
 
 
   <div  class="form-group">
-  <label><b>Customer Type* : </b></label>
+  <label><b>Customer Type <span>*</span> : </b></label>
   <select [(ngModel)]="userDetails.usertype" name = "customertype"
     class="form-control" #customertype="ngModel" required >
     <option selected disabled value="Retailer">Please Select Option</option>
