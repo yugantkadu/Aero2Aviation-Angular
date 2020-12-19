@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/auth/user';
 import { AuthenticatedService } from '../authenticated.service';
-import { Router } from '@angular/router';
+import { RazorpayService } from '../razorpay.service';
 import { Products } from '../vehicle-add/products';
 
 @Component({
@@ -12,7 +12,6 @@ import { Products } from '../vehicle-add/products';
 export class VehicleLandingPageComponent implements OnInit {
   products: any;
   userDetails: User;
-  //quantityinstock: number;
   quantityinstockSelected: number = 1;
   manufacturerName: string;
   brandImg:  string;
@@ -20,8 +19,10 @@ export class VehicleLandingPageComponent implements OnInit {
   email: string;
   contact: number;
 
+  orderStatus: string = '';
   orderObj: any;
-  constructor(private authenticatedService: AuthenticatedService, private router: Router) { }
+
+  constructor(private authenticatedService: AuthenticatedService, private razorpayService: RazorpayService) { }
 
   ngOnInit(): void {
 
@@ -42,10 +43,10 @@ export class VehicleLandingPageComponent implements OnInit {
     console.log(sessionStorage.getItem('userType'));
   }
 
-  validateStock(){
-    if(this.quantityinstockSelected > this.products[0].quantityinstock){
+  validateStock(product: Products){
+    if(this.quantityinstockSelected > product.quantityinstock){
       alert("Please Enter Stock less than Available Stock");
-      this.quantityinstockSelected = 0;
+      this.quantityinstockSelected = 1;
     }
   console.log(this.quantityinstockSelected);
   }
@@ -56,27 +57,35 @@ export class VehicleLandingPageComponent implements OnInit {
     //'https://localhost:44317/Razorpay/Index?orderamount='+ this.products.buyprice+'?manufacturerName='+this.products.manufacturerid?.firstname+'?brandImg='+this.products.brandid?.image+'?retailerName='+ this.userDetails.firstname+'?email='+this.userDetails.email+'?contact='+this.userDetails.mobileno;
     //window.location.href = 'https://localhost:44317/Razorpay/Index?orderamount='+ this.products.buyprice+'?manufacturerName='+this.products.manufacturerid?.firstname+'?brandImg='+this.products.brandid?.image+'?retailerName='+ this.userDetails.firstname+'?email='+this.userDetails.email+'?contact='+this.userDetails.mobileno;
 
-    alert("Order is generated");
-    this.orderObj = {retailerid: {userid: this.userDetails.userid}, productid: {productid: productData.productid}, quantityordered: this.quantityinstockSelected, price: productData.buyprice};
-    console.log(this.orderObj);
-    this.authenticatedService.saveOrderDetails(this.orderObj).subscribe((data:any)=>{
-      console.log(data);
-      window.location.href = 'https://localhost:44317/Razorpay/Index?orderId='+data.orderid+'&orderAmount='+this.products[0].buyprice+'&manufacturerName='+this.products[0].manufacturerid.firstname+' '+this.products[0].manufacturerid.lastname+'&brandImg='+this.products[0].brandid?.image+'&retailerName='+ this.userDetails.firstname+' '+this.userDetails.lastname+'&email='+this.userDetails.email+'&contact='+this.userDetails.mobileno;
-    });
+    this.orderStatus = 'Do you want to buy Product with Productid ' + productData.productid;
+    const del = confirm(this.orderStatus);
+
+    if (del === true) {
+      alert("Order is generated for Productid "+ productData.productid);
+      this.orderObj = {retailerid: {userid: this.userDetails.userid}, productid: {productid: productData.productid}, quantityordered: this.quantityinstockSelected, price: productData.buyprice};
+      console.log(this.orderObj);
+      this.authenticatedService.saveOrderDetails(this.orderObj).subscribe((data:any)=>{
+        console.log(data);
+        sessionStorage.setItem('orderid',data.orderid);
+        window.location.href = 'https://localhost:44317/Razorpay/Index?orderId='+data.orderid+'&orderAmount='+this.products[0].buyprice+'&manufacturerName='+this.products[0].manufacturerid.firstname+' '+this.products[0].manufacturerid.lastname+'&brandImg='+this.products[0].brandid?.image+'&retailerName='+ this.userDetails.firstname+' '+this.userDetails.lastname+'&email='+this.userDetails.email+'&contact='+this.userDetails.mobileno;
+      });
+    } else{
+      this.quantityinstockSelected = 1;
+    }
     //window.location.href = 'https://localhost:44317/Razorpay/Index?orderAmount='+this.products[0].buyprice+'&manufacturerName='+this.products[0].manufacturerid.firstname+' '+this.products[0].manufacturerid.lastname+'&brandImg='+this.products[0].brandid?.image+'&retailerName='+ this.userDetails.firstname+' '+this.userDetails.lastname+'&email='+this.userDetails.email+'&contact='+this.userDetails.mobileno;
     //this.authenticatedService.invokeredirectDotnet("yugant");
-    console.log("Hello");
+    //console.log("Hello");
   }
 
-  callWebApi(){
-    this.authenticatedService.invokeWebApi().subscribe((data: any) => {
-      console.log(data);
-      this.authenticatedService.invokePaymentApi(data[0].Attributes.id).subscribe((paymentData: any) =>{
-        console.log(paymentData);
-      });
-      this.convertUnixDate(data);
-    });
-  }
+  // callWebApi(){
+  //   this.razorpayService.invokeOrderByIdApi().subscribe((data: any) => {
+  //     console.log(data);
+  //     this.razorpayService.invokePaymentByIdApi(data[0].Attributes.id).subscribe((paymentData: any) =>{
+  //       console.log(paymentData);
+  //     });
+  //     this.convertUnixDate(data);
+  //   });
+  // }
 
   convertUnixDate(data: any){
     let unix_timestamp = data[0].Attributes.created_at

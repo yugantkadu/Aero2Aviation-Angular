@@ -55,7 +55,7 @@
   </div>
 
   <div  class="form-group">
-    <label><b>Pincode* : </b></label>
+    <label><b>Pincode <span>*</span> : </b></label>
     <input name = "pincode" [(ngModel)] = "userDetails.pincode" id="pincode" name="pincode"
       class="form-control" #pincode="ngModel" required pattern="[0-9]{6,6}"><br><br>
     <span *ngIf ="f.submitted && pincode.errors?.required">Pincode is mandantory , Please enter it </span>

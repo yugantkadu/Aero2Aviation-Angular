@@ -9,6 +9,7 @@ import { VehicleLandingPageComponent } from './homepage/non-authenticated/vehicl
 import { VehicleLandingPageComponent as LandingPageComponent} from './homepage/authenticated/vehicle-landing-page/vehicle-landing-page.component';
 import { UserProfileComponent } from './homepage/authenticated/user-profile/user-profile.component';
 import { VehicleAddComponent } from './homepage/authenticated/vehicle-add/vehicle-add.component';
+import { VehicleReceiptComponent } from './homepage/authenticated/vehicle-receipt/vehicle-receipt.component';
 
 const routes: Routes = [
   {path: '', component: VehicleLandingPageComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'user-add-product', component: VehicleAddComponent},
   {path: 'vehicle-category', component: VehicleCategoryDetailsComponent},
   {path: 'vehicle-brand', component: VehicleBrandDetailsComponent},
+  {path: 'vehicle-receipt', component: VehicleReceiptComponent},
   {path: 'user-login', component: UserLoginComponent},
   {path: 'user-register', component: UserRegistrationComponent},
   {path: 'admin/:routeName', component: AdminComponent},

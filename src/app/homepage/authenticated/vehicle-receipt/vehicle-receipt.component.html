@@ -1,0 +1,35 @@
+<h1>Vehicle Payment Reciept</h1>
+<table border="1">
+  <tr>
+    <th>Payment id</th>
+    <td>{{paymentData[0].Attributes.id}}</td>
+  </tr>
+  <tr>
+    <th>Order id</th>
+    <td>{{paymentData[0].Attributes.order_id}}</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>{{paymentData[0].Attributes.email}}</td>
+  </tr>
+  <tr>
+    <th>Contact no</th>
+    <td>{{paymentData[0].Attributes.contact}}</td>
+  </tr>
+  <tr>
+    <th>Payment Amount</th>
+    <td>{{paymentData[0].Attributes.amount}} {{paymentData[0].Attributes.currency}}</td>
+  </tr>
+  <tr>
+    <th>Payment Method</th>
+    <td>{{paymentData[0].Attributes.method}}</td>
+  </tr>
+  <tr>
+    <th>Payment Date</th>
+    <td>{{formattedTime}}</td>
+  </tr>
+  <tr>
+    <th>Payment Status</th>
+    <td>{{paymentData[0].Attributes.status === "captured" ? "Paid" : paymentData[0].Attributes.status}}</td>
+  </tr>
+</table>

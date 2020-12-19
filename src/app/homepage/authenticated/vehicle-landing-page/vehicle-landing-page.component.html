@@ -1,6 +1,7 @@
 <img src="{{userDetails?.brandid.image}}" class="center">
 <table *ngIf="products?.length !== 0">
   <tr>
+    <th>Product Id</th>
     <th>Product Image</th>
     <th>Brand name</th>
     <th>Manufacturer Name</th>
@@ -10,16 +11,27 @@
     <th>Buyprice</th>
   </tr>
   <tr *ngFor="let pro of products">
+    <td><p>{{pro.productid}}</p></td>
     <td><p><img src="{{pro.productimage}}"></p></td>
     <td>{{pro.brandid.name}}</td>
     <td><p>{{pro.manufacturerid.firstname}} {{pro.manufacturerid.lastname}}</p></td>
     <td><p>{{pro.productname}}</p></td>
-    <td><p>{{pro.productdescription}}</p></td>
+
+   <td><p>{{pro.productdescription}}</p></td>
     <td><p>{{pro.quantityinstock}}</p></td>
     <td><p>{{pro.buyprice}}</p></td>
-    <td *ngIf="userDetails?.usertype === 'retailer'"><p><input type="number" [(ngModel)]="quantityinstockSelected" (keyup)="validateStock()" style="width: 4em"></p></td>
-    <td *ngIf="userDetails?.usertype === 'retailer'"><input type="button" value="Buy Now" (click)="redirectDotnet(pro)"></td>
-    <td><button (click)="callWebApi()">.NETAPI</button></td>
+    <td *ngIf="userDetails?.usertype === 'retailer'"><p><input type="number" [(ngModel)]="quantityinstockSelected" (keyup)="validateStock(pro)" style="width: 4em"></p></td>
+    <td *ngIf="userDetails?.usertype === 'retailer'">
+      <div *ngIf="orderStatus ===''">
+        <input type="button" value="Buy Now" (click)="redirectDotnet(pro)">
+      </div>
+      <div *ngIf="orderStatus !==''">
+        <span>
+          <b>Get Ready for Payment</b>
+        </span>
+      </div>
+    </td>
+    <!-- <td><button (click)="callWebApi()">.NETAPI</button></td> -->
   </tr>
 </table>
 <div *ngIf="products?.length === 0">

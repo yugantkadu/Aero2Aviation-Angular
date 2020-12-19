@@ -23,15 +23,6 @@ export class AuthenticatedService {
   saveOrderDetails(order: OrderDetails): Observable<any>{
     return this.http.post<any>(url + '/buy/generateOrder',order);
   }
-
-  invokeWebApi(): Observable<any>{//FindPayment
-    return this.http.get<any>("https://localhost:44317/api/RazorpayApi/FindOrderByRecieptId/512");
-  }
-
-  invokePaymentApi(orderId: string): Observable<any>{//FindPayment
-    return this.http.get<any>("https://localhost:44317/api/RazorpayApi/FindPaymentByOrderId/"+ orderId);
-  }
-
   // invokeredirectDotnet(name: string){
   //   this.http.get<any>('https://localhost:44317/Razorpay/Index' + name);
   // }

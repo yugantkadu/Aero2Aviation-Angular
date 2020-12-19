@@ -1,33 +1,51 @@
 <div align = "center">
     <!-- <h1>See User Profile</h1>
     <button (click)="invokeUserProfile()"> GetUserProfile</button> -->
+    <h1>User Profile</h1>
 <br><br>
-<table align="center" >
+<table align="center" border="1">
     <tr>
       <th>UserId</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th>Mobile no</th>
-      <th>Address</th>
-      <th>Pincode</th>
-      <th>Brand Name</th>
-      <th>Category Name</th>
-      <th>User Type</th>
+      <td>{{user?.userid}}</td>
     </tr>
     <tr>
-
-      <td>{{user?.userid}}</td>
+      <th>First Name</th>
       <td>{{user?.firstname}}</td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
       <td>{{user?.lastname}}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
       <td>{{user?.email}}</td>
+    </tr>
+    <tr>
+      <th>Password</th>
       <td>{{user?.password}}</td>
+    </tr>
+    <tr>
+      <th>Mobile no</th>
       <td>{{user?.mobileno}}</td>
+    </tr>
+    <tr>
+      <th>Address</th>
       <td>{{user?.address}}</td>
+    </tr>
+    <tr>
+      <th>Pincode</th>
       <td>{{user?.pincode}}</td>
+    </tr>
+    <tr>
+      <th>Brand Name</th>
       <td>{{user?.categoryid.name}}</td>
+    </tr>
+    <tr>
+      <th>Category Name</th>
       <td>{{user?.brandid.name}}</td>
+    </tr>
+    <tr>
+      <th>User Type</th>
       <td>{{user?.usertype}}</td>
     </tr>
   </table>
