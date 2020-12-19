@@ -38,4 +38,10 @@ export class AdminService {
     const url = 'http://localhost:7071/admin/modifyBrand/';
     return this.http.put<any>( url + brand.brandid, brand);
   }
+
+  invokeModifyOrder(order: any): Observable<any>{
+    console.log(order);
+    const url = 'http://localhost:7071/admin/modifyBrand/';
+    return this.http.put<any>( url + order.orderid, order);
+  }
 }

@@ -74,7 +74,23 @@
 
  <table *ngIf="routeName === 'order'">
   <tr>
-    <td>Heelo order</td>
+    <th>OrderId</th>
+    <th>Product Name</th>
+    <th>Retailer First Name</th>
+    <th>Retailer Last Name</th>
+    <th>Quantityordered</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngFor="let or of orderdetails">
+    <td><input type="text" [(ngModel)]="or.orderid" disabled></td>
+    <td><input type="text" [(ngModel)]="or.productname"></td>
+    <td><input type="text" [(ngModel)]="or.firstname"></td>
+    <td><input type="text" [(ngModel)]="or.lastname"></td>
+    <td><input type="text" [(ngModel)]="or.quantityordered"></td>
+    <td><input type="text" [(ngModel)]="or.price"></td>
+
+
+    <!-- <td><input type="button" value="Modify" (click)="modify(or)"></td> -->
   </tr>
  </table>
 

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'; 
-import {Orderdetails}from './orderdetails';
+import { Component, OnInit } from '@angular/core';
+import {OrderdetailsResult}from './orderdetailsResult';
 import {VehicleOrderService} from './vehicle-order.service';
 
 @Component({
@@ -8,12 +8,12 @@ import {VehicleOrderService} from './vehicle-order.service';
   styleUrls: ['./vehicle-order.component.css']
 })
 export class VehicleOrderComponent implements OnInit {
-  orderdetails: Orderdetails ;
+  orderdetails: OrderdetailsResult ;
 
-  constructor(private vehicleOrderServive: VehicleOrderService) { }
+  constructor(private vehicleOrderService: VehicleOrderService) { }
 
   ngOnInit(): void {
-    this.vehicleOrderServive.invokeOrderDetails().subscribe ((data: any) => {
+    this.vehicleOrderService.invokeOrderDetails().subscribe ((data: any) => {
       this.orderdetails = data;
       console.log(this.orderdetails);
   });

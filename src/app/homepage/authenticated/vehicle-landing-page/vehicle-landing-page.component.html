@@ -18,7 +18,8 @@
     <td><p>{{pro.quantityinstock}}</p></td>
     <td><p>{{pro.buyprice}}</p></td>
     <td *ngIf="userDetails?.usertype === 'retailer'"><p><input type="number" [(ngModel)]="quantityinstockSelected" (keyup)="validateStock()" style="width: 4em"></p></td>
-    <td *ngIf="userDetails?.usertype === 'retailer'"><input type="button" value="Buy Now" (click)="redirectDotnet()"></td>
+    <td *ngIf="userDetails?.usertype === 'retailer'"><input type="button" value="Buy Now" (click)="redirectDotnet(pro)"></td>
+    <td><button (click)="callWebApi()">.NETAPI</button></td>
   </tr>
 </table>
 <div *ngIf="products?.length === 0">

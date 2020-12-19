@@ -1,4 +1,4 @@
-export class Orderdetails{
+export class OrderdetailsResult{
     private  orderid:number;
 	private  productname:String;
 	private  firstname:String;
