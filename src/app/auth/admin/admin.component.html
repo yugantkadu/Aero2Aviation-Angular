@@ -1,4 +1,5 @@
 <table *ngIf="routeName === 'user'">
+  <a routerLink="/admin-operation/add-admin"><button>Add Admin</button></a>
   <tr>
     <th>Userid</th>
     <th>Firstname</th>
@@ -53,6 +54,7 @@
 </table>
 
 <table *ngIf="routeName === 'brand'">
+  <a routerLink="/admin-operation/add-brand"><button>Add Brand</button></a>
   <tr>
     <th>BrandId</th>
     <th>CategoryId</th>

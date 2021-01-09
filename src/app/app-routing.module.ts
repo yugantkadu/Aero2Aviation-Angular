@@ -10,6 +10,8 @@ import { VehicleLandingPageComponent as LandingPageComponent} from './homepage/a
 import { UserProfileComponent } from './homepage/authenticated/user-profile/user-profile.component';
 import { VehicleAddComponent } from './homepage/authenticated/vehicle-add/vehicle-add.component';
 import { VehicleReceiptComponent } from './homepage/authenticated/vehicle-receipt/vehicle-receipt.component';
+import { AddAdminComponent } from './auth/admin/add-admin/add-admin.component';
+import { AddBrandComponent } from './auth/admin/add-brand/add-brand.component';
 
 const routes: Routes = [
   {path: '', component: VehicleLandingPageComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path: 'user-login', component: UserLoginComponent},
   {path: 'user-register', component: UserRegistrationComponent},
   {path: 'admin/:routeName', component: AdminComponent},
+  {path: 'admin-operation/add-admin', component: AddAdminComponent},
+  {path: 'admin-operation/add-brand', component: AddBrandComponent},
 ]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports
