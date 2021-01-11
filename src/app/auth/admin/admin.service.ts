@@ -44,4 +44,10 @@ export class AdminService {
     const url = 'http://localhost:7071/admin/modifyBrand/';
     return this.http.put<any>( url + order.orderid, order);
   }
+
+  invokeAddBrand(brand:Brands):Observable<any>{
+    console.log(brand);
+    const url = 'http://localhost:7071/admin/addBrand/';
+    return this.http.post<any>( url , brand);
+  }
 }
