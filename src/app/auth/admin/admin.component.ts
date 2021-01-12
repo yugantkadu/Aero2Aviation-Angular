@@ -11,6 +11,8 @@ import {VehicleCategoryDetailsService} from 'src/app/homepage/non-authenticated/
 import {VehicleBrandDetailsService} from 'src/app/homepage/non-authenticated/vehicle-brand-details/vehicle-brand-details.service'
 import { OrderdetailsResult } from 'src/app/homepage/authenticated/vehicle-order/orderdetailsResult';
 import { VehicleOrderService } from 'src/app/homepage/authenticated/vehicle-order/vehicle-order.service';
+import { RazorpayService } from 'src/app/homepage/authenticated/razorpay.service';
+import { Payment } from 'src/app/homepage/authenticated/vehicle-receipt/payment';
 
 @Component({
   selector: 'app-admin',
@@ -27,12 +29,13 @@ export class AdminComponent implements OnInit {
   changeBrand: Brands;
   categoryType: Category;
   orderdetails: OrderdetailsResult;
+  paymentDetails: Payment;
   routeName: string;
 
 
   modifyStatus: any;
   txt: string;
-  constructor(private userService: UserService,private vehicleCategoryService:VehicleCategoryDetailsService,private vehicleBrandService:VehicleBrandDetailsService,private vehicleAddService:VehicleAddService, private adminService: AdminService,private route: ActivatedRoute, private vehicleOrderService: VehicleOrderService) { }
+  constructor(private userService: UserService,private vehicleCategoryService:VehicleCategoryDetailsService,private vehicleBrandService:VehicleBrandDetailsService,private vehicleAddService:VehicleAddService, private adminService: AdminService,private route: ActivatedRoute, private vehicleOrderService: VehicleOrderService, private razor: RazorpayService) { }
 
   ngOnInit(): void {
     //this.users = new User();
@@ -57,7 +60,7 @@ export class AdminComponent implements OnInit {
            this.invokeOrder();
       }
       else if(this.routeName === 'payment') {
-
+          this.invokePayment();
       }
     });
   }
@@ -99,6 +102,13 @@ export class AdminComponent implements OnInit {
     this.vehicleOrderService.invokeOrderDetails().subscribe ((data: any) => {
         this.orderdetails = data;
         console.log(this.orderdetails);
+    });
+  }
+
+  invokePayment(){
+    this.razor.invokePaymentDetails().subscribe ((data: any) => {
+        this.paymentDetails = data;
+        console.log(this.paymentDetails);
     });
   }
 

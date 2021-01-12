@@ -51,4 +51,10 @@ export class AdminService {
     return this.http.post<any>( url,user);
     //alert("invoked service");
   }
+  
+  invokeAddBrand(brand:Brands):Observable<any>{
+    console.log(brand);
+    const url = 'http://localhost:7071/admin/addBrand/';
+    return this.http.post<any>( url , brand);
+  }
 }

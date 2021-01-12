@@ -1,1 +1,31 @@
-<p>add-brand works!</p>
+<div align = "center">
+    <form #addBrandPost="ngForm" (ngSubmit)="addBrandPost.form.valid && addBrand(addBrandPost.value)" >
+    <div  class="form-group">
+        <label><b>Category Id <span>*</span> : </b></label>
+        <input name = "categoryid" ngModel  placeholder="Please Enter the Category id"class="form-control"
+         #categoryid="ngModel" required><br><br>
+         <span *ngIf ="addBrandPost.submitted && categoryid.errors?.required">Category id is mandantory , Please enter it</span>
+    </div>
+    <div  class="form-group">
+        <label><b>Brand Name <span>*</span> : </b></label>
+        <input name = "brandName" ngModel  placeholder="Please Enter the Brand Name"class="form-control"
+        #brandname="ngModel" required><br><br>
+        <span *ngIf ="addBrandPost.submitted && brandname.errors?.required">Brand name is mandantory , Please enter it</span>
+        </div>
+    <div  class="form-group">
+        <label><b>Brand Description <span>*</span> : </b></label>
+        <textarea name = "brandDescription" ngModel  placeholder="Please Enter the Brand Description" class="form-control"
+         #branddescription="ngModel" required></textarea><br><br>
+         <span *ngIf ="addBrandPost.submitted && branddescription.errors?.required">Brand Description is mandantory , Please enter it</span>
+    </div>
+    <div  class="form-group">
+        <label><b>Brand Image <span>*</span> : </b></label>
+        <input name = "brandImage" ngModel  placeholder="Please Enter the Image URL" class="form-control"
+         #brandimage="ngModel" required><br><br>
+         <span *ngIf ="addBrandPost.submitted && brandimage.errors?.required">Brand Image is mandantory , Please enter it</span>
+    </div>
+    <button type="submit">Add Brand</button>
+</form>
+</div>
+
+

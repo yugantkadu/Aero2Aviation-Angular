@@ -124,7 +124,22 @@
  </table>
 
  <table *ngIf="routeName === 'payment'">
-  <tr>
-    <td>Heelo payment</td>
+    <tr>
+      <th>PaymentId</th>
+      <th>OrderId</th>
+      <th>Razorpay PaymentId</th>
+      <th>Razorpay OrderId</th>
+      <th>Amount</th>
+      <th>Payment Mode</th>
+      <th>Payment Date</th>
+    </tr>
+    <tr *ngFor="let payment of paymentDetails">
+      <td><input type="text" [(ngModel)]="payment.paymentid" disabled></td>
+      <td><input type="text" [(ngModel)]="payment.orderid.orderid"></td>
+      <td><input type="text" [(ngModel)]="payment.razorpaypaymentid"></td>
+      <td><input type="text" [(ngModel)]="payment.razorpayorderid"></td>
+      <td><input type="text" [(ngModel)]="payment.amount"></td>
+      <td><input type="text" [(ngModel)]="payment.paymentmode"></td>
+      <td><input type="text" [(ngModel)]="payment.paymentdate"></td>
   </tr>
  </table>
