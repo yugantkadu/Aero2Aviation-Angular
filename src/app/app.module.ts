@@ -17,6 +17,8 @@ import { VehicleAddComponent } from './homepage/authenticated/vehicle-add/vehicl
 import { VehicleOrderComponent } from './homepage/authenticated/vehicle-order/vehicle-order.component';
 import { UserProfileComponent } from './homepage/authenticated/user-profile/user-profile.component';
 import { VehicleReceiptComponent } from './homepage/authenticated/vehicle-receipt/vehicle-receipt.component';
+import { AddAdminComponent } from './auth/admin/add-admin/add-admin.component';
+import { AddBrandComponent } from './auth/admin/add-brand/add-brand.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { VehicleReceiptComponent } from './homepage/authenticated/vehicle-receip
     VehicleOrderComponent,
     UserProfileComponent,
     VehicleReceiptComponent,
+    AddAdminComponent,
+    AddBrandComponent,
   ],
   imports: [
     BrowserModule,

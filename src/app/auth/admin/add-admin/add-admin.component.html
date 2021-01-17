@@ -1,0 +1,91 @@
+<p>all fields are compulsary to fill!</p>
+<div align = "center">
+
+<form #addAdminPost="ngForm" (ngSubmit)="addAdmin(addAdminPost.value)" >
+
+     <div  class="form-group"> 
+          <label><b>First name <span>*</span> : </b></label>
+          <input  name="firstname" ngModel placeholder="Please Enter First name" class="form-control"
+          #firstname = "ngModel" required><br><br>
+          <span *ngIf ="addAdminPost.submitted && firstname.errors?.required">first name is mandantory , Please enter it</span>
+     </div>
+
+     <div  class="form-group"> 
+          <label><b>Last name <span>*</span> : </b></label>
+          <input name="lastname" ngModel placeholder="Please Enter last name"class="form-control"
+          #lastname = "ngModel" required><br><br> 
+          <span *ngIf ="addAdminPost.submitted && lastname.errors?.required">lastname Name is mandantory , Please enter it</span>
+          
+     </div>
+     <div  class="form-group"> 
+          <label><b>Email <span>*</span>: </b></label>
+          <input  name="email" ngModel placeholder="Please Enter Email" class="form-control"
+          #email = "ngModel" required><br><br> 
+          <span *ngIf ="addAdminPost.submitted && email.errors?.required">email Name is mandantory , Please enter it</span>
+          
+     </div>
+     
+     <div  class="form-group"> 
+          <label><b>Password <span>*</span>: </b></label>
+          <input name="password" ngModel placeholder="Password" class="form-control"  
+          #password = "ngModel" required><br><br> 
+          <span *ngIf ="addAdminPost.submitted && password.errors?.required">password is mandantory , Please enter it</span>
+          
+     </div>
+
+     <div  class="form-group"> 
+          <label><b>Mobile no <span>*</span>: </b></label>
+         <input  name="mobileno" ngModel placeholder="mobileno" class="form-control"  
+         #mobileno = "ngModel" required><br><br>
+         <span *ngIf ="addAdminPost.submitted && mobileno.errors?.required">mobileno is mandantory , Please enter it</span> 
+         
+     </div>
+
+     <div  class="form-group"> 
+          <label><b>Address <span>*</span>: </b></label>
+          <input  name="address"  ngModel placeholder="Address" class="form-control" 
+          #address = "ngModel" required><br><br>
+          <span *ngIf ="addAdminPost.submitted && address.errors?.required">address is mandantory , Please enter it</span> 
+          
+     </div>
+
+
+     <div  class="form-group"> 
+          <label><b>Pin code <span>*</span>: </b></label>
+          <input name="pincode"  ngModel placeholder="pin code"
+          #pincode = "ngModel" required><br><br>
+          <span *ngIf ="addAdminPost.submitted && pincode.errors?.required">pincode is mandantory , Please enter it</span>
+          
+     </div>
+
+     <div  class="form-group"> 
+          <label><b>Category id <span>*</span>: </b></label>
+          <input name="categoryid"  placeholder="Category type" disabled value="100"
+            ><br><br>
+         
+         
+     </div>
+
+     <div  class="form-group"> 
+          <label><b>Brand id <span>*</span>: </b></label>
+          <input  name="brandid"  placeholder="Brand name" disabled value="200"
+          ><br><br>
+         
+         
+     </div>
+
+     
+
+
+     <div  class="form-group"> 
+          <label><b>User type <span>*</span>: </b></label>
+          <input name="usertype" value="admin" disabled placeholder="User type" ><br><br>
+         
+          <br><br>
+      </div>
+
+     <input type="submit" value="Add Admin" >
+
+</form>
+
+</div>

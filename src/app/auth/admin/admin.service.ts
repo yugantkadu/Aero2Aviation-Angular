@@ -44,4 +44,17 @@ export class AdminService {
     const url = 'http://localhost:7071/admin/modifyBrand/';
     return this.http.put<any>( url + order.orderid, order);
   }
+
+  invokeAddAdmin(user: any): Observable<any>{
+    console.log(user);
+    const url = 'http://localhost:7071/admin/addAdmin/';
+    return this.http.post<any>( url,user);
+    //alert("invoked service");
+  }
+  
+  invokeAddBrand(brand:Brands):Observable<any>{
+    console.log(brand);
+    const url = 'http://localhost:7071/admin/addBrand/';
+    return this.http.post<any>( url , brand);
+  }
 }

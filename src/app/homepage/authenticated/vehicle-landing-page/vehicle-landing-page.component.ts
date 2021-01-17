@@ -34,7 +34,7 @@ export class VehicleLandingPageComponent implements OnInit {
           console.log(data);
           this.products = data.filter((item) => ((item?.brandid.brandid === this.userDetails?.brandid.brandid) && (item?.brandid.categoryid.categoryid === this.userDetails?.brandid.categoryid.categoryid)));
           console.log(this.products);
-          console.log(this.products.productname);
+          //console.log(this.products.productname);
         });
     });
 
@@ -67,7 +67,7 @@ export class VehicleLandingPageComponent implements OnInit {
       this.authenticatedService.saveOrderDetails(this.orderObj).subscribe((data:any)=>{
         console.log(data);
         sessionStorage.setItem('orderid',data.orderid);
-        window.location.href = 'https://localhost:44317/Razorpay/Index?orderId='+data.orderid+'&orderAmount='+this.products[0].buyprice+'&manufacturerName='+this.products[0].manufacturerid.firstname+' '+this.products[0].manufacturerid.lastname+'&brandImg='+this.products[0].brandid?.image+'&retailerName='+ this.userDetails.firstname+' '+this.userDetails.lastname+'&email='+this.userDetails.email+'&contact='+this.userDetails.mobileno;
+        window.location.href = 'https://localhost:44317/Razorpay/Index?orderId='+data.orderid+'&orderAmount='+productData.buyprice+'&manufacturerName='+productData.manufacturerid.firstname+' '+productData.manufacturerid.lastname+'&brandImg='+productData.brandid?.image+'&retailerName='+ this.userDetails.firstname+' '+this.userDetails.lastname+'&email='+this.userDetails.email+'&contact='+this.userDetails.mobileno;
       });
     } else{
       this.quantityinstockSelected = 1;

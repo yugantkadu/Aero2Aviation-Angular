@@ -2,11 +2,11 @@
 <table border="1">
   <tr>
     <th>Payment id</th>
-    <td>{{paymentData[0].Attributes.id}}</td>
+    <td>{{paymentResult.razorpaypaymentid}}</td>
   </tr>
   <tr>
     <th>Order id</th>
-    <td>{{paymentData[0].Attributes.order_id}}</td>
+    <td>{{paymentResult.razorpayorderid}}</td>
   </tr>
   <tr>
     <th>Email</th>
@@ -18,15 +18,15 @@
   </tr>
   <tr>
     <th>Payment Amount</th>
-    <td>{{paymentData[0].Attributes.amount}} {{paymentData[0].Attributes.currency}}</td>
+    <td>{{paymentResult.amount}} {{paymentData[0].Attributes.currency}}</td>
   </tr>
   <tr>
     <th>Payment Method</th>
-    <td>{{paymentData[0].Attributes.method}}</td>
+    <td>{{paymentResult.paymentmode}}</td>
   </tr>
   <tr>
     <th>Payment Date</th>
-    <td>{{formattedTime}}</td>
+    <td>{{paymentResult.paymentdate}}</td>
   </tr>
   <tr>
     <th>Payment Status</th>

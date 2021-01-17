@@ -49,7 +49,7 @@ export class UserService {
 
   setAuthData(userId: any,firstname: string, usertype: string ) {
     sessionStorage.setItem('userId', userId);
-    sessionStorage.setItem('firstname', firstname);
+    sessionStorage.setItem('firstname', firstname);  
     sessionStorage.setItem('userType', usertype);
     this.authStatusListener.next(true);
   }

@@ -1,4 +1,5 @@
 <table *ngIf="routeName === 'user'">
+  <a routerLink="/admin-operation/add-admin"><button>Add Admin</button></a>
   <tr>
     <th>Userid</th>
     <th>Firstname</th>
@@ -53,6 +54,7 @@
 </table>
 
 <table *ngIf="routeName === 'brand'">
+  <a routerLink="/admin-operation/add-brand"><button>Add Brand</button></a>
   <tr>
     <th>BrandId</th>
     <th>CategoryId</th>
@@ -122,7 +124,22 @@
  </table>
 
  <table *ngIf="routeName === 'payment'">
-  <tr>
-    <td>Heelo payment</td>
+    <tr>
+      <th>PaymentId</th>
+      <th>OrderId</th>
+      <th>Razorpay PaymentId</th>
+      <th>Razorpay OrderId</th>
+      <th>Amount</th>
+      <th>Payment Mode</th>
+      <th>Payment Date</th>
+    </tr>
+    <tr *ngFor="let payment of paymentDetails">
+      <td><input type="text" [(ngModel)]="payment.paymentid" disabled></td>
+      <td><input type="text" [(ngModel)]="payment.orderid.orderid"></td>
+      <td><input type="text" [(ngModel)]="payment.razorpaypaymentid"></td>
+      <td><input type="text" [(ngModel)]="payment.razorpayorderid"></td>
+      <td><input type="text" [(ngModel)]="payment.amount"></td>
+      <td><input type="text" [(ngModel)]="payment.paymentmode"></td>
+      <td><input type="text" [(ngModel)]="payment.paymentdate"></td>
   </tr>
  </table>

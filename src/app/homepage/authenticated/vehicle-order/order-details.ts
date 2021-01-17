@@ -3,8 +3,8 @@ import { Products } from "../vehicle-add/products";
 
 export class OrderDetails {
   orderid: number;
-  retailerid: User;
-  productid: Products;
-  quantityordered: number;
-  price : number;
+  retailerid?: User;
+  productid?: Products;
+  quantityordered?: number;
+  price ?: number;
 }

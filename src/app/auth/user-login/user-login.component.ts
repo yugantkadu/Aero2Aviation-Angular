@@ -24,6 +24,7 @@ export class UserLoginComponent implements OnInit {
     this.userService.invokeVerifyUser(form.value.email, form.value.password).subscribe((data: any) => {
       console.log(data);
       this.userResult = data;
+      this.message = this.userResult.status === true ? 'Login Successful' : 'Login Failed';
       this.userService.setAuthData(this.userResult.user.userid, this.userResult.user.firstname, this.userResult.user.usertype);
 
       if (this.userResult.user !== null && this.userResult.user.usertype === 'admin') {
@@ -36,7 +37,6 @@ export class UserLoginComponent implements OnInit {
       //   sessionStorage.setItem('username', this.userResult.user.email);
       //   sessionStorage.setItem('usertype', this.userResult.user.usertype);
       // }
-      this.message = this.userResult.status === true ? 'Login Successful' : 'Login Failed';
     });
   }
 
