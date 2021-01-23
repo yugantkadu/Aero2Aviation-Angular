@@ -17,18 +17,18 @@ export class HeaderComponent implements OnInit {
     this.isUserLoggedIn();
     this.getUserDetails();
     this.userService.getAuthStatusListener().subscribe(
-      authStatus => {
+      (authStatus) => {
         this.isUserLoggedIn();
         this.getUserDetails();
-      }
-    );
-
+      },
+      (err)=>{
+        console.log("Error" + err);
+      });
   }
 
   isUserLoggedIn(){
     const user = sessionStorage.getItem('userType');
     //console.log(user);
-    //console.log(!(user === null));
     return (user === null);
   }
 
@@ -39,6 +39,9 @@ export class HeaderComponent implements OnInit {
         //console.log(data);
         this.userDetails = userData;
         console.log(this.userDetails);
+      },
+      (err)=>{
+        console.log("Error" + err);
       });
     }
   }

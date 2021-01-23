@@ -33,6 +33,9 @@ export class VehicleAddComponent implements OnInit
       console.log(userdata);
       this.userDetails = userdata;
       console.log(userdata.userid);
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 

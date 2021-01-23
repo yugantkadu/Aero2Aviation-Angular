@@ -28,7 +28,6 @@
    </span>
 
   <span *ngIf="usertype === 'admin' && usertype !== null">
-    <a><b>Type</b>:  {{userDetails?.categoryid.name }}</a>
     <a><b>Admin name</b>: {{userDetails.firstname}}</a>
     <a [routerLink]="['/admin', 'user']" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">User</a>
@@ -68,9 +67,3 @@
 
   </div>
 </div>
-
-<!--<div style="padding-left:20px">
-  <h1>Responsive Header</h1>
-  <p>Resize the browser window to see the effect.</p>
-  <p>Some content..</p>
-</div>-->

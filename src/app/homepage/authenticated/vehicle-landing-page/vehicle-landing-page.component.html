@@ -20,7 +20,7 @@
    <td><p>{{pro.productdescription}}</p></td>
     <td><p>{{pro.quantityinstock}}</p></td>
     <td><p>{{pro.buyprice}}</p></td>
-    <td *ngIf="userDetails?.usertype === 'retailer'"><p><input type="number" [(ngModel)]="quantityinstockSelected" (keyup)="validateStock(pro)" style="width: 4em"></p></td>
+    <td *ngIf="userDetails?.usertype === 'retailer'"><p><input type="number" [(ngModel)]="quantityinstockSelected" (keyup)="validateStock(pro)" disabled style="width: 4em"></p></td>
     <td *ngIf="userDetails?.usertype === 'retailer'">
       <div *ngIf="orderStatus ===''">
         <input type="button" value="Buy Now" (click)="redirectDotnet(pro)">

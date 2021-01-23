@@ -12,11 +12,12 @@ export class VehicleLandingPageComponent implements OnInit {
   constructor(private vehicleCategoryDetailsService: VehicleCategoryDetailsService) { }
 
   ngOnInit(): void {
-    this.vehicleCategoryDetailsService.invokeCategoryDetails().subscribe((data: any) => {
+    this.vehicleCategoryDetailsService.invokeCategoryDetails().subscribe((data: Category) => {
       this.categoryDetails = data;
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
-
-
   }
 
 }
