@@ -38,8 +38,7 @@ export class VehicleLandingPageComponent implements OnInit {
         });
     });
 
-    //this.filterProductDetails();
-    //console.log("I am in heelo");
+
     console.log(sessionStorage.getItem('userType'));
   }
 

@@ -65,7 +65,8 @@ export class UserRegistrationComponent implements OnInit {
 
     console.log(this.userDetails);
     console.log(this.categoryFetch);
-    const alterData = {
+    
+    const userData = {
       firstname : this.userDetails.firstname,
       lastname: this.userDetails.lastname,
       email: this.userDetails.email,
@@ -76,26 +77,14 @@ export class UserRegistrationComponent implements OnInit {
       categoryid: {categoryid : this.categoryFetch},
       brandid: {brandid: this.brandFetch},
       usertype : this.userDetails.usertype};
-    this.userRegistrationService.callRegisterUserDetails(alterData).subscribe(
-      (data: UserResult)=>{
 
-        //console.log(data);
+    this.userRegistrationService.callRegisterUserDetails(userData).subscribe((data: UserResult)=>{
 
         this.userResult = data ;
         console.log(this.userResult);
         this.userDetails = null;
         alert(this.userResult.message);
         this.router.navigate(['/user-login']);
-        /*this.userDetails.firstname= " ";
-        this.userDetails.lastname = "";
-        this.userDetails.email = "";
-        this.userDetails.password = "";
-        this.userDetails.address = "";
-        this.userDetails.pincode = null;
-        this.userDetails.categoryid = null ;
-        this.userDetails.brandid = null;
-        this.userDetails.usertype = "";
-        this.userDetails.mobileno= null;*/
 
      },
       (err)=>{

@@ -28,7 +28,7 @@
    </span>
 
   <span *ngIf="usertype === 'admin' && usertype !== null">
-    <a><b>Type</b>:  {{userDetails?.categoryid.name }}</a>
+    <!--<a><b>Type</b>:  {{userDetails?.categoryid.name }}</a> -->
     <a><b>Admin name</b>: {{userDetails.firstname}}</a>
     <a [routerLink]="['/admin', 'user']" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact:true}">User</a>

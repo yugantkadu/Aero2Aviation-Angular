@@ -10,8 +10,10 @@ export class VehicleBrandDetailsService {
 
   constructor(private http: HttpClient) { }
 
-  invokeBrandDetails(): Observable<Brands>{
+  invokeBrandDetails(): Observable<Brands>
+  {
     const url = 'http://localhost:7071/vehicle/getAllBrands';
     return this.http.get<Brands>(url);
+    
   }
 }

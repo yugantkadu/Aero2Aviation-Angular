@@ -3,6 +3,7 @@
 
 </div>
 <form (ngSubmit) = "f.form.valid && callRegister()" #f="ngForm" >
+ 
   <div  class="form-group">
     <label><b>First Name <span>*</span> : </b></label>
     <input name = "firstname" [(ngModel)] = "userDetails.firstname" id="firstname"

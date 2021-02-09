@@ -15,6 +15,7 @@ const url = 'http://localhost:7071';
 export class UserService {
   private authStatusListener = new Subject <boolean>();
   constructor(private http: HttpClient, private router: Router) { }
+ 
   callRegisterUserDetails(user: User ): Observable<UserResult>
   {
     console.log('Service Layer');
