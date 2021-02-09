@@ -35,9 +35,11 @@ export class VehicleLandingPageComponent implements OnInit {
           this.products = data.filter((item) => ((item?.brandid.brandid === this.userDetails?.brandid.brandid) && (item?.brandid.categoryid.categoryid === this.userDetails?.brandid.categoryid.categoryid)));
           console.log(this.products);
           //console.log(this.products.productname);
+        },
+        (err)=>{
+          console.log("Error" + err);
         });
     });
-
 
     console.log(sessionStorage.getItem('userType'));
   }
@@ -51,11 +53,6 @@ export class VehicleLandingPageComponent implements OnInit {
   }
 
   redirectDotnet(productData: Products){
-    //this.orderObj = {orderid: 123, orderamount: this.products.buyprice, manufacturerName: this.products.manufacturerid.firstname ,brandImg:  this.products.brandid.image, retailerName: this.userDetails.firstname, email: this.userDetails.email, contact: this.userDetails.mobileno};
-    //this.router.navigate(['https://localhost:44317/Razorpay/Index']);
-    //'https://localhost:44317/Razorpay/Index?orderamount='+ this.products.buyprice+'?manufacturerName='+this.products.manufacturerid?.firstname+'?brandImg='+this.products.brandid?.image+'?retailerName='+ this.userDetails.firstname+'?email='+this.userDetails.email+'?contact='+this.userDetails.mobileno;
-    //window.location.href = 'https://localhost:44317/Razorpay/Index?orderamount='+ this.products.buyprice+'?manufacturerName='+this.products.manufacturerid?.firstname+'?brandImg='+this.products.brandid?.image+'?retailerName='+ this.userDetails.firstname+'?email='+this.userDetails.email+'?contact='+this.userDetails.mobileno;
-
     this.orderStatus = 'Do you want to buy Product with Productid ' + productData.productid;
     const del = confirm(this.orderStatus);
 
@@ -67,24 +64,15 @@ export class VehicleLandingPageComponent implements OnInit {
         console.log(data);
         sessionStorage.setItem('orderid',data.orderid);
         window.location.href = 'https://localhost:44317/Razorpay/Index?orderId='+data.orderid+'&orderAmount='+productData.buyprice+'&manufacturerName='+productData.manufacturerid.firstname+' '+productData.manufacturerid.lastname+'&brandImg='+productData.brandid?.image+'&retailerName='+ this.userDetails.firstname+' '+this.userDetails.lastname+'&email='+this.userDetails.email+'&contact='+this.userDetails.mobileno;
+      },
+      (err)=>{
+        console.log("Error" + err);
       });
     } else{
       this.quantityinstockSelected = 1;
     }
-    //window.location.href = 'https://localhost:44317/Razorpay/Index?orderAmount='+this.products[0].buyprice+'&manufacturerName='+this.products[0].manufacturerid.firstname+' '+this.products[0].manufacturerid.lastname+'&brandImg='+this.products[0].brandid?.image+'&retailerName='+ this.userDetails.firstname+' '+this.userDetails.lastname+'&email='+this.userDetails.email+'&contact='+this.userDetails.mobileno;
-    //this.authenticatedService.invokeredirectDotnet("yugant");
-    //console.log("Hello");
-  }
 
-  // callWebApi(){
-  //   this.razorpayService.invokeOrderByIdApi().subscribe((data: any) => {
-  //     console.log(data);
-  //     this.razorpayService.invokePaymentByIdApi(data[0].Attributes.id).subscribe((paymentData: any) =>{
-  //       console.log(paymentData);
-  //     });
-  //     this.convertUnixDate(data);
-  //   });
-  // }
+  }
 
   convertUnixDate(data: any){
     let unix_timestamp = data[0].Attributes.created_at
@@ -100,7 +88,4 @@ export class VehicleLandingPageComponent implements OnInit {
       console.log(formattedTime);
   }
 
-  // filterProductDetails(){
-  //     this.products = this.products.filter((item) => item.brandid.brandid === this.userDetails.brandid.brandid);
-  //   }
 }

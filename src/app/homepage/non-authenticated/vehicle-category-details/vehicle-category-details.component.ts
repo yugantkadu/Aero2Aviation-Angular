@@ -15,6 +15,9 @@ export class VehicleCategoryDetailsComponent implements OnInit {
     this.vehicleCategoryDetailsService.invokeCategoryDetails().subscribe((data: any) => {
       this.category = data;
       console.log(this.category);
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 }

@@ -32,11 +32,9 @@ export class UserLoginComponent implements OnInit {
       }else{
         this.router.navigate(['/user-landing-page']);
       }
-
-      // if ( this.userResult.status === true){
-      //   sessionStorage.setItem('username', this.userResult.user.email);
-      //   sessionStorage.setItem('usertype', this.userResult.user.usertype);
-      // }
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 

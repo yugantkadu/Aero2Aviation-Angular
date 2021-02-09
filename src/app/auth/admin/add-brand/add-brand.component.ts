@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddBrandComponent implements OnInit {
     brand: Brands;
-  constructor(private adminService:AdminService , private router: Router) { 
+  constructor(private adminService:AdminService , private router: Router) {
     this.brand=new Brands();
   }
 
@@ -27,7 +27,10 @@ export class AddBrandComponent implements OnInit {
      console.log(data);
      alert(data.message);
      this.router.navigate(['/admin', "brand"]);
-  }); 
+  },
+  (err)=>{
+    console.log("Error" + err);
+  });
  }
 
 }

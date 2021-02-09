@@ -33,13 +33,22 @@ export class VehicleReceiptComponent implements OnInit {
           paymentmode: paymentData[0].Attributes.method,
           paymentdate: this.formattedTime};
         this.savePaymentDetails(this.paymentResult);
+      },
+      (err)=>{
+        console.log("Error" + err);
       });
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 
   savePaymentDetails(payment: Payment){
     this.razorpayService.commitPaymentDetails(payment).subscribe((data:any) => {
       console.log(data);
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 

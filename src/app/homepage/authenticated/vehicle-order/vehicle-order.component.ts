@@ -16,6 +16,9 @@ export class VehicleOrderComponent implements OnInit {
     this.vehicleOrderService.invokeOrderDetails().subscribe ((data: any) => {
       this.orderdetails = data;
       console.log(this.orderdetails);
+  },
+  (err)=>{
+    console.log("Error" + err);
   });
 
 }

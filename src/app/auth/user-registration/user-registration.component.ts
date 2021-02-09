@@ -35,25 +35,20 @@ export class UserRegistrationComponent implements OnInit {
     this.brandService.invokeBrandDetails().subscribe((data: Brands) => {
       this.brandType = data;
       console.log(this.brandType);
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
+
     this.categoryService.invokeCategoryDetails().subscribe((data: Category) => {
       this.categoryType = data;
       console.log(this.categoryType);
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
 
-   // this.checkDisabled()
   }
-
-  /*checkDisabled(){
-      if((this.userDetails.firstname === undefined || this.userDetails.firstname === "") || (this.userDetails.lastname === undefined || this.userDetails.lastname === "") ) {
-        //console.log("true");
-        return true;
-      }
-      else{
-        //console.log("false");
-        return false;
-      }
-  } */
 
   onSelect(categoryId: number) {
     this.changeBrand = this.brandType.filter((item) => item.categoryid.categoryid === categoryId);
@@ -88,7 +83,6 @@ export class UserRegistrationComponent implements OnInit {
 
      },
       (err)=>{
-
         console.log(err);
         this.msg = "Operation Failed";
       });

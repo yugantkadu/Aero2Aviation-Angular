@@ -37,20 +37,10 @@ export class UserService {
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
   }
-  // if (this.userResult.user !== null && this.userResult.user.usertype === 'admin') {
-  //   sessionStorage.setItem('username', this.userResult.user.email);
-  //   sessionStorage.setItem('usertype', this.userResult.user.usertype);
-  //   this.router.navigate(['/admin', "user"]);
-  // }
-
-  // if ( this.userResult.status === true){
-  //   sessionStorage.setItem('username', this.userResult.user.email);
-  //   sessionStorage.setItem('usertype', this.userResult.user.usertype);
-  // }
 
   setAuthData(userId: any,firstname: string, usertype: string ) {
     sessionStorage.setItem('userId', userId);
-    sessionStorage.setItem('firstname', firstname);  
+    sessionStorage.setItem('firstname', firstname);
     sessionStorage.setItem('userType', usertype);
     this.authStatusListener.next(true);
   }

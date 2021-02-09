@@ -18,6 +18,12 @@ export class UserProfileComponent implements OnInit {
     this.userProfileService.CallUserProfile(sessionStorage.getItem('userId')).subscribe ((data: any) => {
       console.log(data);
       this.user = data;
+
+      //console.log(this.userProfileResult);
+   },
+   (err)=>{
+     console.log("Error" + err);
+
    });
   }
 }

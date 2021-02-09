@@ -38,7 +38,6 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserService,private vehicleCategoryService:VehicleCategoryDetailsService,private vehicleBrandService:VehicleBrandDetailsService,private vehicleAddService:VehicleAddService, private adminService: AdminService,private route: ActivatedRoute, private vehicleOrderService: VehicleOrderService, private razor: RazorpayService) { }
 
   ngOnInit(): void {
-    //this.users = new User();
     this.route.paramMap.subscribe( (params: ParamMap) => {
       this.routeName = params.get('routeName');
       console.log(this.routeName);
@@ -69,6 +68,9 @@ export class AdminComponent implements OnInit {
     this.userService.invokeAllUsers().subscribe((data: User) => {
       console.log(data);
       this.users = data;
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 
@@ -79,7 +81,10 @@ export class AdminComponent implements OnInit {
     this.vehicleAddService.invokeProductDetails().subscribe((data: Products) => {
       console.log(data);
       this.products = data;
-    });;
+    },
+    (err)=>{
+      console.log("Error" + err);
+    });
   }
 
   invokeCategory()
@@ -87,7 +92,10 @@ export class AdminComponent implements OnInit {
      this.vehicleCategoryService.invokeCategoryDetails().subscribe((data: Category) => {
       console.log(data);
       this.category = data;
-    });;
+    },
+    (err)=>{
+      console.log("Error" + err);
+    });
   }
 
     invokeBrand()
@@ -95,6 +103,9 @@ export class AdminComponent implements OnInit {
      this.vehicleBrandService.invokeBrandDetails().subscribe((data: Brands) => {
       console.log(data);
       this.brand = data;
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 
@@ -102,6 +113,9 @@ export class AdminComponent implements OnInit {
     this.vehicleOrderService.invokeOrderDetails().subscribe ((data: any) => {
         this.orderdetails = data;
         console.log(this.orderdetails);
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 
@@ -109,6 +123,9 @@ export class AdminComponent implements OnInit {
     this.razor.invokePaymentDetails().subscribe ((data: any) => {
         this.paymentDetails = data;
         console.log(this.paymentDetails);
+    },
+    (err)=>{
+      console.log("Error" + err);
     });
   }
 
@@ -120,6 +137,9 @@ export class AdminComponent implements OnInit {
       if (mod === true) {
         this.adminService.invokeModifyUser(obj).subscribe((data: any) => {
           console.log(data);
+        },
+        (err)=>{
+          console.log("Error" + err);
         });
         alert('Userid ' + obj.userid + ' has been modified ');
       }
@@ -135,7 +155,10 @@ export class AdminComponent implements OnInit {
     if (mod === true) {
       this.adminService.invokeModifyCategory(obj).subscribe((data: any) => {
         console.log(data);
-      });;
+      },
+      (err)=>{
+        console.log("Error" + err);
+      });
       alert('CategoryId ' + obj.categoryid + ' has been modified ');
     }
     else {
@@ -150,6 +173,9 @@ export class AdminComponent implements OnInit {
       if (mod === true) {
         this.adminService.invokeModifyBrand(obj).subscribe((data: any) => {
           console.log(data);
+        },
+        (err)=>{
+          console.log("Error" + err);
         });
         alert('BrandId ' + obj.brandid + ' has been modified ');
       }
@@ -166,6 +192,9 @@ export class AdminComponent implements OnInit {
       if (mod === true) {
         this.adminService.invokeModifyProduct(obj).subscribe((data: any) => {
           console.log(data);
+        },
+        (err)=>{
+          console.log("Error" + err);
         });
         alert('Orderid ' + obj.orderid + ' has been modified ');
       }
@@ -181,6 +210,9 @@ export class AdminComponent implements OnInit {
     if (mod === true) {
       this.adminService.invokeModifyProduct(obj).subscribe((data: any) => {
         console.log(data);
+      },
+      (err)=>{
+        console.log("Error" + err);
       });
       alert('Productid ' + obj.productid + ' has been modified ');
     }

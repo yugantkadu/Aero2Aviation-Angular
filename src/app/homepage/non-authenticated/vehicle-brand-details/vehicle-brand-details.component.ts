@@ -17,6 +17,9 @@ export class VehicleBrandDetailsComponent implements OnInit {
     this.vehicleBrandDetailsService.invokeBrandDetails().subscribe ((data: any) => {
       this.brand = data;
       console.log(this.brand);
+  },
+  (err)=>{
+    console.log("Error" + err);
   });
   }
 
